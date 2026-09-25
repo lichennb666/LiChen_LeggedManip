@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="target_box">
+    <static>false</static>
+    <link name="body">
+      <inertial>
+        <mass>0.20</mass>
+        <inertia>
+          <ixx>0.0001093</ixx><iyy>0.0001333</iyy><izz>0.0001093</izz>
+        </inertia>
+      </inertial>
+      <collision name="body_collision">
+        <surface>
+          <friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode></friction>
+          <contact><ode><kp>300000</kp><kd>30</kd><max_vel>0.005</max_vel><min_depth>0.001</min_depth></ode></contact>
+        </surface>
+        <geometry><box><size>0.10 0.08 0.10</size></box></geometry>
+      </collision>
+      <visual name="body_visual">
+        <geometry><box><size>0.10 0.08 0.10</size></box></geometry>
+        <material><ambient>0.55 0.18 0.05 1</ambient><diffuse>0.75 0.25 0.06 1</diffuse></material>
+      </visual>
+    </link>
+    <link name="handle">
+      <pose>-0.130 0 0 0 0 0</pose>
+      <inertial>
+        <mass>0.01</mass>
+        <inertia><ixx>0.000004</ixx><iyy>0.000004</iyy><izz>0.000001</izz></inertia>
+      </inertial>
+      <collision name="grip_collision">
+        <surface>
+          <friction><ode><mu>15.0</mu><mu2>15.0</mu2><slip1>0.0</slip1><slip2>0.0</slip2></ode></friction>
+          <contact><ode><kp>300000</kp><kd>30</kd><max_vel>0.005</max_vel><min_depth>0.001</min_depth></ode></contact>
+        </surface>
+        <geometry><box><size>0.018 0.018 0.060</size></box></geometry>
+      </collision>
+      <collision name="upper_mount_collision">
+        <pose>0.040 0 0.030 0 0 0</pose>
+        <geometry><box><size>0.080 0.018 0.018</size></box></geometry>
+      </collision>
+      <collision name="lower_mount_collision">
+        <pose>0.040 0 -0.030 0 0 0</pose>
+        <geometry><box><size>0.080 0.018 0.018</size></box></geometry>
+      </collision>
+      <visual name="grip_visual">
+        <geometry><box><size>0.018 0.018 0.060</size></box></geometry>
+        <material><ambient>0 1 0 1</ambient><diffuse>0 1 0 1</diffuse></material>
+      </visual>
+      <visual name="upper_mount_visual">
+        <pose>0.040 0 0.030 0 0 0</pose>
+        <geometry><box><size>0.080 0.018 0.018</size></box></geometry>
+        <material><ambient>0 1 0 1</ambient><diffuse>0 1 0 1</diffuse></material>
+      </visual>
+      <visual name="lower_mount_visual">
+        <pose>0.040 0 -0.030 0 0 0</pose>
+        <geometry><box><size>0.080 0.018 0.018</size></box></geometry>
+        <material><ambient>0 1 0 1</ambient><diffuse>0 1 0 1</diffuse></material>
+      </visual>
+    </link>
+    <joint name="body_to_handle" type="fixed">
+      <parent>body</parent>
+      <child>handle</child>
+    </joint>
+  </model>
+</sdf>

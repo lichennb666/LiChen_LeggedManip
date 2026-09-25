@@ -1,0 +1,20 @@
+<launch>
+  <!-- ============================================================ -->
+  <!-- Go2+Piper Gazebo + MoveIt 联合启动                             -->
+  <!-- ============================================================ -->
+  <arg name="world" default="$(find unitree_gazebo)/worlds/competition_scene.world"/>
+  <arg name="gui" default="true"/>
+  <arg name="rviz" default="false"/>
+
+  <!-- ====== 1. Gazebo + 机器人生成 ====== -->
+  <include file="$(find go2_piper_description)/launch/gazebo.launch">
+    <arg name="world" value="$(arg world)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+  <!-- ====== 2. MoveIt MoveGroup ====== -->
+  <include file="$(find go2_piper_moveit_config)/launch/move_group.launch">
+    <arg name="rviz" value="$(arg rviz)"/>
+  </include>
+
+</launch>

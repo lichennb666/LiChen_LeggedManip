@@ -1,0 +1,110 @@
+go2_piper_mission:
+  ros__parameters:
+    pick_waypoint: [-0.057, -0.040, 0.0]
+    drop_waypoint: [0.11, 0.05, 0.0]
+    drop_object_pose: [0.20, -0.30, 0.556]
+    drop_table_center: [0.20, -0.30]
+    drop_table_size: [0.80, 0.40]
+    # Green handle thickness along the gripper closing direction.
+    cube_size: 0.018
+    object_footprint: [0.10, 0.08]
+    max_linear_speed: 0.30
+    carrying_linear_speed: 0.24
+    carrying_min_speed: 0.22
+    max_angular_speed: 0.25
+    position_tolerance: 0.05
+    yaw_tolerance: 0.0873
+    detection_timeout: 10.0
+    physical_grasp: true
+    # Link7 and Link8 must both contact the green handle before the Gazebo
+    # plugin creates a Link6-to-handle fixed joint. No pose is overwritten.
+    assisted_grasp: true
+    # Keep the fixed joint for lift and transport. The old mission-side
+    # SetEntityState fallback remains opt-in only for regression experiments.
+    virtualize_physical_transport: false
+    cube_entity: target_box
+    # Handle centre in the target_box model frame.
+    grasp_point_offset: [-0.130, 0.0, 0.0]
+    # Pure-contact experiments reset the light cube immediately before
+    # detection so startup settling drift does not dominate grasp tuning.
+    reset_cube_on_start: true
+    # In assisted mode the reset x/y is derived from the live finger-pad
+    # midpoint so every run starts inside Piper's stable local workspace.
+    cube_reset_pose: [0.61, 0.20, 0.556]
+    # Pure-contact Gazebo tuning is very sensitive to centimetre-level target
+    # bias. Keep RGB-D detection as the trigger, then use Gazebo truth for the
+    # physical target so contact tuning is not dominated by perception error.
+    physical_target_from_gazebo: true
+    # If the open fingers move the cube during PREGRASP, refresh the physical
+    # x/y target once before DESCEND instead of closing behind the moved cube.
+    physical_refresh_target_after_pregrasp: false
+    physical_pregrasp_refresh_threshold: 0.02
+    target_center_z: 0.556
+    # Depth is measured on the visible surface; compensate along the live
+    # camera-to-point ray rather than assuming the base heading is identical.
+    target_depth_offset: 0.009
+    minimum_lift: 0.010
+    # Do not allow a visually fake grasp to pass: the cube must actually lift
+    # before the demo can switch to any transport hold.
+    require_physical_lift: true
+    # During gait the floating base bobs and the cube can ride on the finger
+    # edge, so the midpoint offset is only a loose guard; z/aperture reject
+    # actual drops and empty closes.
+    minimum_transport_z: 0.10
+    maximum_transport_offset: 0.20
+    minimum_gripper_aperture: 0.010
+    minimum_base_transport: 0.10
+    drop_z_tolerance: 0.10
+    navigation_timeout: 90.0
+    transport_timeout: 120.0
+    motion_burst: 5.0
+    settle_duration: 3.0
+    skip_pick_navigation: true
+    # Deep desired closure guarantees contact with the 18 mm handle.
+    gripper_closed: [0.0, 0.0]
+    # Assisted grasp closes around the handle before requesting fixed attach.
+    physical_gripper_open: [0.024, -0.024]
+    physical_gripper_closed: [0.004, -0.004]
+    gripper_close_wait: 2.20
+    station_keeping_speed: 0.05
+    initial_arm_settle: 0.0
+    # Keep the physical pregrasp target inside the Gazebo/WBC Piper workspace.
+    # A 15 cm high pregrasp was unreachable for the learned IK adapter and
+    # caused PREGRASP timeout; this height lets the arm align in x/y before
+    # the short descent.
+    pregrasp_height: 0.050
+    # Keep the WBC base stopped during PREGRASP/DESCEND.  The GraspNet/MoveIt
+    # reference logic separates arm approach from base motion; otherwise base
+    # station-keeping adds lateral sweep at the fingers and pushes the object.
+    physical_grasp_approach_offset: 0.0
+    # Keep the pad target near the detected cube centre.  Positive offsets were
+    # observed to push the cube forward after the gripper geometry fix, while a
+    # negative offset can close behind the cube.
+    grasp_forward_offset: 0.0
+    # Pure physical pregrasp only: keep the open finger-pad front edge slightly
+    # behind the cube before the final descend target returns to cube centre.
+    physical_pregrasp_forward_offset: 0.0
+    # The mirrored pad midpoint sits slightly to the negative-y side of the
+    # cube at contact; a small pure-physical y offset centres the cube between
+    # the fingers before close.
+    physical_grasp_lateral_offset: 0.0
+    # Grasp near the block centre; high contact tips the thin block before the
+    # fingers close.
+    grasp_height_offset: 0.020
+    lift_height: 0.06
+    # Pure-contact lift only needs to clear the table and satisfy minimum_lift.
+    # A 20 mm lift is reachable in this Gazebo/WBC pocket when paired with a
+    # strict lift servo tolerance; the old loose tolerance could mask no-lift.
+    physical_lift_height: 0.025
+    visual_servo_timeout: 15.0
+    visual_servo_tolerance: 0.03
+    # The learned policy has centimetre-scale endpoint oscillation; requiring
+    # repeated samples caused it to sweep a correctly aligned cube off-table.
+    visual_servo_stable_samples: 1
+    visual_servo_max_step: 0.04
+    # The cube station is inside the arm's mid-reach workspace, so the fine
+    # visual servo closes the planar gap; the learned locomotion policy is not
+    # a reliable holonomic servo in Gazebo (it yaws instead of translating),
+    # so avoid base motion entirely at this fixed workstation.
+    coarse_alignment_threshold: 0.30
+    coarse_alignment_gain: 0.85

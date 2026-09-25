@@ -1,0 +1,251 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.5 -1</direction>
+    </light>
+
+    <!-- Ground plane -->
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ===== Room: 10m x 8m, walls 2.5m high ===== -->
+
+    <!-- Wall North (along X, at Y=4) -->
+    <model name='wall_north'>
+      <static>1</static>
+      <pose>0 4 1.25 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><box><size>10 0.15 2.5</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><box><size>10 0.15 2.5</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/White</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Wall South (along X, at Y=-4) -->
+    <model name='wall_south'>
+      <static>1</static>
+      <pose>0 -4 1.25 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><box><size>10 0.15 2.5</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><box><size>10 0.15 2.5</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/White</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Wall West (along Y, at X=-5) -->
+    <model name='wall_west'>
+      <static>1</static>
+      <pose>-5 0 1.25 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><box><size>0.15 8 2.5</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><box><size>0.15 8 2.5</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/White</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Wall East (along Y, at X=5) -->
+    <model name='wall_east'>
+      <static>1</static>
+      <pose>5 0 1.25 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><box><size>0.15 8 2.5</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><box><size>0.15 8 2.5</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/White</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ===== Interior obstacles for LiDAR features ===== -->
+
+    <!-- Pillar 1 -->
+    <model name='pillar_1'>
+      <static>1</static>
+      <pose>-2 2 0.75 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><cylinder><radius>0.2</radius><length>1.5</length></cylinder></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><cylinder><radius>0.2</radius><length>1.5</length></cylinder></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Red</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Pillar 2 -->
+    <model name='pillar_2'>
+      <static>1</static>
+      <pose>2 -1.5 0.75 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><cylinder><radius>0.2</radius><length>1.5</length></cylinder></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><cylinder><radius>0.2</radius><length>1.5</length></cylinder></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Blue</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Box obstacle (table-like) -->
+    <model name='box_1'>
+      <static>1</static>
+      <pose>3 2.5 0.4 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><box><size>1.2 0.6 0.8</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><box><size>1.2 0.6 0.8</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Wood</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Box obstacle 2 -->
+    <model name='box_2'>
+      <static>1</static>
+      <pose>-3.5 -2 0.5 0 0 0.3</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><box><size>1.0 0.8 1.0</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><box><size>1.0 0.8 1.0</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/DarkGrey</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- L-shaped partition wall -->
+    <model name='partition_1'>
+      <static>1</static>
+      <pose>-1 -1 0.75 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><box><size>2.0 0.1 1.5</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><box><size>2.0 0.1 1.5</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material>
+        </visual>
+      </link>
+    </model>
+    <model name='partition_2'>
+      <static>1</static>
+      <pose>-2 -2 0.75 0 0 1.5708</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><box><size>2.0 0.1 1.5</size></box></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><box><size>2.0 0.1 1.5</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Small cylinder obstacles (like trash cans) -->
+    <model name='cylinder_1'>
+      <static>1</static>
+      <pose>1 1 0.3 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><cylinder><radius>0.15</radius><length>0.6</length></cylinder></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><cylinder><radius>0.15</radius><length>0.6</length></cylinder></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Green</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name='cylinder_2'>
+      <static>1</static>
+      <pose>3.5 -2.5 0.3 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><cylinder><radius>0.15</radius><length>0.6</length></cylinder></geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry><cylinder><radius>0.15</radius><length>0.6</length></cylinder></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Orange</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Physics -->
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+  </world>
+</sdf>

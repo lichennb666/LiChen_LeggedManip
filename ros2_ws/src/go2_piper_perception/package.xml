@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>go2_piper_perception</name>
+  <version>0.1.0</version>
+  <description>HSV and RGB-D target detector for Go2-Piper.</description>
+  <maintainer email="lili@robot.com">lili</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_python</buildtool_depend>
+  <depend>rclpy</depend>
+  <depend>cv_bridge</depend>
+  <depend>geometry_msgs</depend>
+  <depend>message_filters</depend>
+  <depend>nav_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>go2_piper_interfaces</depend>
+  <test_depend>ament_pytest</test_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>

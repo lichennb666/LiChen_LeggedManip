@@ -161,6 +161,78 @@ def base_height_tracking(
     return torch.exp(-height_error / std)
 
 
+def stand_still_bonus(
+    env: ManagerBasedRLEnv,
+    command_name: str,
+    std: float,
+    deadband: float = 0.05,
+    asset_cfg: SceneEntityCfg = SceneEntityCfg("robot"),
+) -> torch.Tensor:
+    """Reward holding the base still when the velocity command is near zero.
+
+    The base-velocity tracking kernel is intentionally flat at small errors, so a
+    policy can accumulate centimetre-scale drift while earning near-full tracking
+    reward.  This term uses a sharp kernel and is active only below ``deadband``,
+    teaching the policy to actually stop (zero base velocity) when commanded to.
+    """
+    asset: RigidObject = env.scene[asset_cfg.name]
+    command = env.command_manager.get_command(command_name)
+    lin_cmd = torch.norm(command[:, :2], dim=1)
+    active = ((lin_cmd < deadband) & (torch.abs(command[:, 2]) < deadband)).float()
+    motion = (
+        torch.sum(torch.square(asset.data.root_lin_vel_b[:, :2]), dim=1)
+        + torch.square(asset.data.root_ang_vel_b[:, 2])
+    )
+    return active * torch.exp(-motion / std**2)
+
+
+def track_lin_vel_low_speed_exp(
+    env: ManagerBasedRLEnv,
+    command_name: str,
+    std: float,
+    low_speed_threshold: float = 0.2,
+    asset_cfg: SceneEntityCfg = SceneEntityCfg("robot"),
+) -> torch.Tensor:
+    """Sharpen base linear-velocity tracking for low-speed commands.
+
+    Navigation stacks spend most of their time near a goal issuing small velocity
+    corrections, where the standard flat kernel barely discriminates.  This term
+    applies a sharp exponential kernel (small ``std``) only when the commanded
+    planar speed is below ``low_speed_threshold``.
+    """
+    asset: RigidObject = env.scene[asset_cfg.name]
+    command = env.command_manager.get_command(command_name)
+    cmd_mag = torch.norm(command[:, :2], dim=1)
+    active = (cmd_mag < low_speed_threshold).float()
+    error = torch.sum(
+        torch.square(command[:, :2] - asset.data.root_lin_vel_b[:, :2]), dim=1
+    )
+    return active * torch.exp(-error / std**2)
+
+
+def track_ang_vel_low_speed_exp(
+    env: ManagerBasedRLEnv,
+    command_name: str,
+    std: float,
+    low_speed_threshold: float = 0.35,
+    yaw_deadband: float = 0.05,
+    asset_cfg: SceneEntityCfg = SceneEntityCfg("robot"),
+) -> torch.Tensor:
+    """Sharpen yaw-rate tracking when the base is commanded to turn in place.
+
+    The standard angular-velocity reward is broad enough that under-rotating can
+    still score well.  This term focuses on low-linear-speed commands with a
+    meaningful yaw request, matching the Gazebo Classic failure mode.
+    """
+    asset: RigidObject = env.scene[asset_cfg.name]
+    command = env.command_manager.get_command(command_name)
+    lin_cmd = torch.norm(command[:, :2], dim=1)
+    yaw_cmd = command[:, 2]
+    active = ((lin_cmd < low_speed_threshold) & (torch.abs(yaw_cmd) > yaw_deadband)).float()
+    error = torch.square(yaw_cmd - asset.data.root_ang_vel_b[:, 2])
+    return active * torch.exp(-error / std**2)
+
+
 # ---------------------------------------------------------------------------
 # Root penalties
 # ---------------------------------------------------------------------------
@@ -408,3 +480,101 @@ def air_time_variance_penalty(
     return torch.var(torch.clip(last_air_time, max=0.5), dim=1) + torch.var(
         torch.clip(last_contact_time, max=0.5), dim=1
     )
+
+
+# ---------------------------------------------------------------------------
+# Stairs / gait rewards (added for stair locomotion)
+# ---------------------------------------------------------------------------
+
+
+def feet_vertical_surface_contacts(
+    env: ManagerBasedRLEnv, sensor_cfg: SceneEntityCfg
+) -> torch.Tensor:
+    """Penalize feet hitting vertical surfaces (e.g. stair risers).
+
+    A horizontal contact force much larger than the vertical force means the
+    foot kicked a wall/riser instead of landing on top of the step.
+    """
+    contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
+    forces = contact_sensor.data.net_forces_w[:, sensor_cfg.body_ids, :]
+    forces_z = torch.abs(forces[..., 2])
+    forces_xy = torch.norm(forces[..., :2], dim=-1)
+    hit_vertical = torch.any(forces_xy > 4.0 * forces_z, dim=1).float()
+    # only penalize when the robot is upright
+    upright = (-env.scene["robot"].data.projected_gravity_b[:, 2] > 0.7).float()
+    return hit_vertical * upright
+
+
+def feet_to_base_distance(
+    env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg
+) -> torch.Tensor:
+    """Penalize feet drifting too far from the base (prevents over-extended legs)."""
+    asset: Articulation = env.scene[asset_cfg.name]
+    feet_pos = asset.data.body_pos_w[:, asset_cfg.body_ids, :3]
+    base_pos = asset.data.root_pos_w[:, :3].unsqueeze(1)
+    dist = torch.norm(feet_pos[:, :, :2] - base_pos[:, :, :2], dim=-1)
+    return torch.mean(dist, dim=1)
+
+
+def phase_signal(
+    env: ManagerBasedRLEnv,
+    step_freq: float = 1.4,
+    duty_factor: float = 0.65,
+    phase_offset: tuple[float, ...] = (0.0, 0.5, 0.5, 0.0),
+) -> torch.Tensor:
+    """Per-foot gait phase in [0, 1) driven by the episode clock.
+
+    phase < duty_factor marks the contact (stance) window. Offset is a
+    trot gait (FL, FR, RL, RR) = (0, 0.5, 0.5, 0). Adjust the order to match
+    the ``.*_foot`` body ordering of the contact sensor.
+    """
+    t = env.episode_length_buf.float() * env.step_dt
+    offsets = torch.tensor(phase_offset, device=env.device).float()
+    phase = torch.remainder(t.unsqueeze(1) * step_freq + offsets.unsqueeze(0), 1.0)
+    return phase
+
+
+def periodic_contact_suggestion(
+    env: ManagerBasedRLEnv,
+    sensor_cfg: SceneEntityCfg,
+    command_name: str = "base_velocity",
+    step_freq: float = 1.4,
+    duty_factor: float = 0.65,
+) -> torch.Tensor:
+    """Reward a periodic trot gait: feet touch during stance, lift during swing."""
+    contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
+    contacts = (
+        torch.abs(contact_sensor.data.net_forces_w[:, sensor_cfg.body_ids, 2]) > 1.0
+    ).float()
+    should_move = (
+        torch.norm(env.command_manager.get_command(command_name)[:, :2], dim=1) > 0.1
+    ).float()
+    phase = phase_signal(env, step_freq, duty_factor)
+    contact_on = (phase < duty_factor).float()
+    correct = contact_on * contacts + (1.0 - contact_on) * (1.0 - contacts)
+    return torch.mean(correct, dim=1) * should_move
+
+
+def feet_height_clearance(
+    env: ManagerBasedRLEnv,
+    sensor_cfg: SceneEntityCfg,
+    asset_cfg: SceneEntityCfg,
+    target_height: float = 0.05,
+    command_name: str = "base_velocity",
+) -> torch.Tensor:
+    """Reward swing feet lifting above a target height relative to the base."""
+    contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
+    asset: Articulation = env.scene[asset_cfg.name]
+    contacts = (
+        torch.abs(contact_sensor.data.net_forces_w[:, sensor_cfg.body_ids, 2]) > 1.0
+    ).float()
+    swing = 1.0 - contacts
+    foot_height = (
+        asset.data.body_pos_w[:, asset_cfg.body_ids, 2]
+        - asset.data.root_pos_w[:, 2].unsqueeze(1)
+    )
+    clearance = torch.exp(-torch.clamp(target_height - foot_height, min=0.0) / 0.02)
+    should_move = (
+        torch.norm(env.command_manager.get_command(command_name)[:, :2], dim=1) > 0.1
+    ).float()
+    return torch.mean(clearance * swing, dim=1) * should_move

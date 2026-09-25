@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>open3d_loc</name>
+  <version>0.1.0</version>
+  <description>PCD-map global localization using Open3D multi-scale ICP.</description>
+
+  <maintainer email="dev@livoxtech.com">open3d_loc maintainers</maintainer>
+  <license>BSD-3-Clause</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>geometry_msgs</depend>
+  <depend>builtin_interfaces</depend>
+  <depend>libopen3d-dev</depend>
+  <depend>nav_msgs</depend>
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+
+  <build_depend>eigen3_cmake_module</build_depend>
+  <depend>eigen</depend>
+
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>fast_lio</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

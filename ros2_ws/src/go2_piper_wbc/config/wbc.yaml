@@ -1,0 +1,22 @@
+go2_piper_wbc:
+  ros__parameters:
+    policy_path: /workspace/LeggedManip_Lab/mujoco/deploy/policy/go2_piper/wbc/policy.pt
+    policy_rate: 50.0
+    startup_delay: 3.0
+    command_timeout: 0.2
+    # /cmd_vel adapter for navigation: clip to the training command range,
+    # slew toward the goal (acceleration ramp), and stop smoothly on timeout.
+    cmd_vel_max_linear: 0.3
+    cmd_vel_max_angular: 1.0
+    cmd_vel_lin_accel: 1.0
+    cmd_vel_ang_accel: 2.0
+    cmd_vel_deadband: 0.01
+    action_scale: 0.25
+    # /odom is already close to the policy Link0 height in this Gazebo model.
+    # The WBC default 60 mm offset converts world EE lift targets too low.
+    link0_offset_z: 0.02
+    arm_ik_position_slew_rate: 0.50
+    arm_ik_joint_slew_rate: 2.0
+    # IK is limited by the mission to local refinement after the learned
+    # locomotion policy has coarsely aligned the mobile base.
+    enable_arm_ik: true

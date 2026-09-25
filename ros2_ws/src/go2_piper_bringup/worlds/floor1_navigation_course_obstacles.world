@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="floor1_navigation_course_obstacles">
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros><namespace>/gazebo</namespace></ros><update_rate>50.0</update_rate>
+    </plugin>
+    <gui fullscreen="false"><camera name="floor_overview">
+      <pose>-5 -7 8 0 0.65 0.72</pose><view_controller>orbit</view_controller>
+    </camera></gui>
+    <physics name="ode" type="ode"><max_step_size>0.005</max_step_size>
+      <real_time_update_rate>200</real_time_update_rate>
+      <ode><solver><type>quick</type><iters>100</iters><sor>1.0</sor></solver></ode>
+    </physics>
+    <gravity>0 0 -9.81</gravity>
+    <include><uri>model://sun</uri></include>
+    <model name="floor"><static>true</static><link name="link">
+      <collision name="collision"><geometry><box><size>11 7 0.10</size></box></geometry></collision>
+      <visual name="visual"><geometry><box><size>11 7 0.10</size></box></geometry>
+        <material><ambient>0.70 0.70 0.72 1</ambient><diffuse>0.82 0.82 0.84 1</diffuse></material></visual>
+    </link></model>
+
+    <!-- Outer shell and two interior wall sections create a small one-floor
+         office route with wide doorways suitable for the quadruped. -->
+    <model name="walls"><static>true</static><link name="link">
+      <collision name="north"><pose>0 3.45 0.75 0 0 0</pose><geometry><box><size>11 .10 1.5</size></box></geometry></collision>
+      <collision name="south"><pose>0 -3.45 0.75 0 0 0</pose><geometry><box><size>11 .10 1.5</size></box></geometry></collision>
+      <collision name="west"><pose>-5.45 0 0.75 0 0 0</pose><geometry><box><size>.10 7 1.5</size></box></geometry></collision>
+      <collision name="east"><pose>5.45 0 0.75 0 0 0</pose><geometry><box><size>.10 7 1.5</size></box></geometry></collision>
+      <collision name="partition_a"><pose>0 -2.35 0.75 0 0 0</pose><geometry><box><size>.10 2.2 1.5</size></box></geometry></collision>
+      <collision name="partition_b"><pose>0 2.35 0.75 0 0 0</pose><geometry><box><size>.10 2.2 1.5</size></box></geometry></collision>
+      <collision name="partition_c"><pose>.75 1.40 0.75 0 0 0</pose><geometry><box><size>1.5 .10 1.5</size></box></geometry></collision>
+      <collision name="partition_d"><pose>5.15 1.40 0.75 0 0 0</pose><geometry><box><size>.6 .10 1.5</size></box></geometry></collision>
+      <visual name="north_v"><pose>0 3.45 0.75 0 0 0</pose><geometry><box><size>11 .10 1.5</size></box></geometry></visual>
+      <visual name="south_v"><pose>0 -3.45 0.75 0 0 0</pose><geometry><box><size>11 .10 1.5</size></box></geometry></visual>
+      <visual name="west_v"><pose>-5.45 0 0.75 0 0 0</pose><geometry><box><size>.10 7 1.5</size></box></geometry></visual>
+      <visual name="east_v"><pose>5.45 0 0.75 0 0 0</pose><geometry><box><size>.10 7 1.5</size></box></geometry></visual>
+      <visual name="pa_v"><pose>0 -2.35 0.75 0 0 0</pose><geometry><box><size>.10 2.2 1.5</size></box></geometry></visual>
+      <visual name="pb_v"><pose>0 2.35 0.75 0 0 0</pose><geometry><box><size>.10 2.2 1.5</size></box></geometry></visual>
+      <visual name="pc_v"><pose>.75 1.40 0.75 0 0 0</pose><geometry><box><size>1.5 .10 1.5</size></box></geometry></visual>
+      <visual name="pd_v"><pose>5.15 1.40 0.75 0 0 0</pose><geometry><box><size>.6 .10 1.5</size></box></geometry></visual>
+    </link></model>
+
+    <model name="pickup_table"><static>true</static><pose>4.45 2.30 0.496 0 0 0</pose><link name="link">
+      <collision name="top"><geometry><box><size>.60 .55 .02</size></box></geometry></collision>
+      <visual name="top_v"><geometry><box><size>.60 .55 .02</size></box></geometry>
+        <material><ambient>.35 .22 .10 1</ambient><diffuse>.55 .34 .15 1</diffuse></material></visual>
+      <collision name="l1"><pose>-.24 -.21 -.253 0 0 0</pose><geometry><box><size>.05 .05 .486</size></box></geometry></collision>
+      <collision name="l2"><pose>-.24 .21 -.253 0 0 0</pose><geometry><box><size>.05 .05 .486</size></box></geometry></collision>
+      <collision name="l3"><pose>.24 -.21 -.253 0 0 0</pose><geometry><box><size>.05 .05 .486</size></box></geometry></collision>
+      <collision name="l4"><pose>.24 .21 -.253 0 0 0</pose><geometry><box><size>.05 .05 .486</size></box></geometry></collision>
+      <visual name="l1v"><pose>-.24 -.21 -.253 0 0 0</pose><geometry><box><size>.05 .05 .486</size></box></geometry></visual>
+      <visual name="l2v"><pose>-.24 .21 -.253 0 0 0</pose><geometry><box><size>.05 .05 .486</size></box></geometry></visual>
+      <visual name="l3v"><pose>.24 -.21 -.253 0 0 0</pose><geometry><box><size>.05 .05 .486</size></box></geometry></visual>
+      <visual name="l4v"><pose>.24 .21 -.253 0 0 0</pose><geometry><box><size>.05 .05 .486</size></box></geometry></visual>
+    </link></model>
+    <model name="target_cube"><static>false</static><pose>4.45 2.30 .531 0 0 0</pose><link name="body">
+      <inertial><mass>.08</mass><inertia><ixx>.0000333</ixx><iyy>.0000333</iyy><izz>.0000333</izz></inertia></inertial>
+      <collision name="body_collision"><surface><friction><ode><mu>3</mu><mu2>3</mu2></ode></friction>
+        <contact><ode><kp>300000</kp><kd>30</kd><max_vel>.005</max_vel><min_depth>.001</min_depth></ode></contact></surface>
+        <geometry><box><size>.05 .05 .05</size></box></geometry></collision>
+      <visual name="body_visual"><geometry><box><size>.05 .05 .05</size></box></geometry>
+        <material><ambient>.05 .75 .08 1</ambient><diffuse>.08 .95 .12 1</diffuse></material></visual>
+    </link></model>
+
+    <!-- Obstacles come from the 2D navigation playground world in
+         go2_course1_projects(1): jersey barriers, brick boxes and a cone. -->
+    <model name="course2d_jersey_barrier_01"><static>true</static><pose>-1.4 -2.0 0 0 0 0</pose><link name="link">
+      <collision name="upright"><pose>0 0 0.5715 0 0 0</pose><geometry><box><size>1.50 0.3063 1.143</size></box></geometry></collision>
+      <collision name="base"><pose>0 0 0.032258 0 0 0</pose><geometry><box><size>1.50 0.8107 0.064516</size></box></geometry></collision>
+      <collision name="base2"><pose>0 0 0.1 0 0 0</pose><geometry><box><size>1.50 0.65 0.1</size></box></geometry></collision>
+      <collision name="base3"><pose>0 0 0.2 0 0 0</pose><geometry><box><size>1.50 0.5 0.1</size></box></geometry></collision>
+      <visual name="visual"><pose>0 0 0.5715 0 0 0</pose><geometry><box><size>1.50 0.3063 1.143</size></box></geometry><material><ambient>0.9 0.45 0.05 1</ambient><diffuse>0.95 0.55 0.08 1</diffuse></material></visual>
+    </link></model>
+    <model name="course2d_jersey_barrier_02"><static>true</static><pose>1.1 -0.8 0 0 0 1.54836</pose><link name="link">
+      <collision name="upright"><pose>0 0 0.5715 0 0 0</pose><geometry><box><size>1.50 0.3063 1.143</size></box></geometry></collision>
+      <collision name="base"><pose>0 0 0.032258 0 0 0</pose><geometry><box><size>1.50 0.8107 0.064516</size></box></geometry></collision>
+      <collision name="base2"><pose>0 0 0.1 0 0 0</pose><geometry><box><size>1.50 0.65 0.1</size></box></geometry></collision>
+      <collision name="base3"><pose>0 0 0.2 0 0 0</pose><geometry><box><size>1.50 0.5 0.1</size></box></geometry></collision>
+      <visual name="visual"><pose>0 0 0.5715 0 0 0</pose><geometry><box><size>1.50 0.3063 1.143</size></box></geometry><material><ambient>0.9 0.45 0.05 1</ambient><diffuse>0.95 0.55 0.08 1</diffuse></material></visual>
+    </link></model>
+    <model name="course2d_construction_cone"><static>true</static><pose>3.0 -2.2 0 0 0 0</pose><link name="link">
+      <collision name="collision"><pose>0 0 0.25 0 0 0</pose><geometry><cylinder><radius>0.18</radius><length>0.50</length></cylinder></geometry></collision>
+      <visual name="visual"><pose>0 0 0.25 0 0 0</pose><geometry><cylinder><radius>0.18</radius><length>0.50</length></cylinder></geometry><material><ambient>1.0 0.35 0.02 1</ambient><diffuse>1.0 0.45 0.05 1</diffuse></material></visual>
+    </link></model>
+  </world>
+</sdf>

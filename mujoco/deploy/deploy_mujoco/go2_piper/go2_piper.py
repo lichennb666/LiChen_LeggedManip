@@ -43,16 +43,27 @@ from deploy_mujoco.keyboard_controller import KeyboardController  # noqa: E402
 
 CURRENT_FILE_DIR = Path(__file__).parent
 CURRENT_ROOT_DIR = CURRENT_FILE_DIR.parent.parent.parent
+REPOSITORY_ROOT = CURRENT_ROOT_DIR.parent
+POLICY_CONTRACT_PATH = (
+    REPOSITORY_ROOT / "ros2_ws" / "src" / "go2_piper_wbc"
+    / "config" / "policy_contract.yaml"
+)
+WBC_PYTHON_ROOT = REPOSITORY_ROOT / "ros2_ws" / "src" / "go2_piper_wbc"
+if str(WBC_PYTHON_ROOT) not in sys.path:
+    sys.path.append(str(WBC_PYTHON_ROOT))
+
+from go2_piper_wbc.policy_contract import indices_for_names, load_policy_contract  # noqa: E402
 
 # ---------------------------------------------------------------------------
 # Joint index remapping
 # ---------------------------------------------------------------------------
-# IsaacLab order  → MuJoCo order
-# FL_hip/thigh/calf (0-2), FR_hip/thigh/calf (3-5),
-# RL_hip/thigh/calf (6-8), RR_hip/thigh/calf (9-11)
-# ↓
-# FR (3-5), FL (0-2), RR (9-11), RL (6-8)
-ISAAC_TO_MUJOCO: list[int] = [3, 4, 5, 0, 1, 2, 9, 10, 11, 6, 7, 8]
+# MuJoCo qpos order is explicit in the MJCF and differs from policy order.
+MUJOCO_LEG_JOINT_NAMES = [
+    "FL_hip_joint", "FL_thigh_joint", "FL_calf_joint",
+    "FR_hip_joint", "FR_thigh_joint", "FR_calf_joint",
+    "RL_hip_joint", "RL_thigh_joint", "RL_calf_joint",
+    "RR_hip_joint", "RR_thigh_joint", "RR_calf_joint",
+]
 
 
 # ---------------------------------------------------------------------------
@@ -128,6 +139,90 @@ def setup_tracking_camera(viewer: mujoco.viewer.Handle, model: mujoco.MjModel,
 
 
 # ---------------------------------------------------------------------------
+# Command visualization (markers in the MuJoCo viewer)
+# ---------------------------------------------------------------------------
+
+def _quat_mul_wxyz(a: np.ndarray, b: np.ndarray) -> np.ndarray:
+    """Hamilton product of two (w, x, y, z) quaternions."""
+    aw, ax, ay, az = a
+    bw, bx, by, bz = b
+    return np.array([
+        aw * bw - ax * bx - ay * by - az * bz,
+        aw * bx + ax * bw + ay * bz - az * by,
+        aw * by - ax * bz + ay * bw + az * bx,
+        aw * bz + ax * by - ay * bx + az * bw,
+    ])
+
+
+def _quat_to_mat_wxyz(q: np.ndarray) -> np.ndarray:
+    """Rotation matrix from a (w, x, y, z) quaternion."""
+    w, x, y, z = q
+    return np.array([
+        [1 - 2 * (y * y + z * z), 2 * (x * y - w * z), 2 * (x * z + w * y)],
+        [2 * (x * y + w * z), 1 - 2 * (x * x + z * z), 2 * (y * z - w * x)],
+        [2 * (x * z - w * y), 2 * (y * z + w * x), 1 - 2 * (x * x + y * y)],
+    ])
+
+
+def draw_command_viz(viewer, target_world, target_quat_world, ee_world, vel_from, vel_to) -> None:
+    """Draw the EE goal marker, the current EE, and the velocity command arrow.
+
+    - green sphere + RGB axes : commanded EE pose (xy body-relative, z world,
+      orientation relative to the base, converted to world here)
+    - blue sphere             : actual EE position
+    - white line              : goal -> actual tracking error
+    - yellow arrow            : base-velocity command (world direction)
+    """
+    scn = viewer.user_scn
+    scn.ngeom = 0
+
+    def _sphere(pos, radius, rgba):
+        geom = scn.geoms[scn.ngeom]
+        mujoco.mjv_initGeom(
+            geom,
+            mujoco.mjtGeom.mjGEOM_SPHERE,
+            np.array([radius, 0.0, 0.0]),
+            np.asarray(pos, dtype=float),
+            np.eye(3).reshape(-1),
+            np.asarray(rgba, dtype=np.float32),
+        )
+        scn.ngeom += 1
+
+    def _arrow(start, end, width, rgba):
+        geom = scn.geoms[scn.ngeom]
+        mujoco.mjv_connector(
+            geom, mujoco.mjtGeom.mjGEOM_ARROW, width,
+            np.asarray(start, dtype=float), np.asarray(end, dtype=float))
+        geom.rgba[:] = rgba
+        scn.ngeom += 1
+
+    def _line(start, end, width, rgba):
+        geom = scn.geoms[scn.ngeom]
+        mujoco.mjv_connector(
+            geom, mujoco.mjtGeom.mjGEOM_LINE, width,
+            np.asarray(start, dtype=float), np.asarray(end, dtype=float))
+        geom.rgba[:] = rgba
+        scn.ngeom += 1
+
+    target_world = np.asarray(target_world, dtype=float)
+    ee_world = np.asarray(ee_world, dtype=float)
+
+    _sphere(target_world, 0.030, (0.0, 1.0, 0.0, 0.9))   # commanded EE pose
+    _sphere(ee_world, 0.018, (0.0, 0.4, 1.0, 0.9))        # actual EE pose
+
+    # Orientation axes of the commanded pose (R/G/B = body X/Y/Z).
+    rot = _quat_to_mat_wxyz(np.asarray(target_quat_world, dtype=float))
+    for axis, rgba in enumerate(((1.0, 0.15, 0.15, 0.95),
+                                 (0.15, 1.0, 0.15, 0.95),
+                                 (0.15, 0.4, 1.0, 0.95))):
+        _arrow(target_world, target_world + rot[:, axis] * 0.08, 0.006, rgba)
+
+    if hasattr(mujoco, "mjv_connector"):
+        _line(target_world, ee_world, 2, (1.0, 1.0, 1.0, 0.6))
+        _arrow(vel_from, vel_to, 0.012, (1.0, 0.8, 0.0, 0.95))
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -152,6 +247,10 @@ def main() -> None:
     args = build_arg_parser().parse_args()
     config_path = CURRENT_FILE_DIR / args.config_file
     cfg = load_config(config_path)
+    contract = load_policy_contract(POLICY_CONTRACT_PATH)
+    policy_leg_names = list(contract.joint_names[:12])
+    policy_to_mujoco = indices_for_names(policy_leg_names, MUJOCO_LEG_JOINT_NAMES)
+    mujoco_to_policy = indices_for_names(MUJOCO_LEG_JOINT_NAMES, policy_leg_names)
 
     # ── resolve paths ────────────────────────────────────────────────────────
     root = str(CURRENT_ROOT_DIR)
@@ -160,23 +259,29 @@ def main() -> None:
 
     # ── simulation parameters ────────────────────────────────────────────────
     simulation_duration  = cfg["simulation_duration"]
-    simulation_dt        = cfg["simulation_dt"]
-    control_decimation   = cfg["control_decimation"]
+    simulation_dt = 1.0 / contract.physics_rate_hz
+    control_decimation = round(
+        contract.physics_rate_hz / contract.policy_rate_hz)
 
     # ── control parameters ───────────────────────────────────────────────────
-    kps            = torch.tensor(cfg["kps"],            dtype=torch.float32)
-    kds            = torch.tensor(cfg["kds"],            dtype=torch.float32)
-    default_angles = torch.tensor(cfg["default_angles"], dtype=torch.float32)
-    action_scale   = torch.tensor(cfg["action_scale"],   dtype=torch.float32)
+    policy_kps = torch.from_numpy(contract.stiffness)
+    policy_kds = torch.from_numpy(contract.damping)
+    policy_defaults = torch.from_numpy(contract.default_angles)
+    kps = torch.cat([policy_kps[:12][policy_to_mujoco], policy_kps[12:]])
+    kds = torch.cat([policy_kds[:12][policy_to_mujoco], policy_kds[12:]])
+    default_angles = torch.cat([
+        policy_defaults[:12][policy_to_mujoco], policy_defaults[12:]])
+    action_scale = contract.action_scale
+    action_clip = contract.action_clip
 
     # ── observation dimensions ───────────────────────────────────────────────
-    num_actions  = cfg["num_actions"]
-    num_hist     = cfg["num_hist"]
+    num_actions  = len(contract.joint_names)
+    num_hist     = contract.history_depth
     num_env      = cfg["num_env"]
 
     # ── scaling factors ──────────────────────────────────────────────────────
-    base_ang_vel_scale = cfg["base_ang_vel_scale"]
-    joint_vel_scale    = cfg["joint_vel_scale"]
+    base_ang_vel_scale = contract.base_angular_velocity_scale
+    joint_vel_scale    = contract.joint_velocity_scale
 
     # ── policy & I/O buffers ─────────────────────────────────────────────────
     policy = torch.jit.load(policy_path)
@@ -217,6 +322,14 @@ def main() -> None:
     step_counter = 0
     last_policy_time = time.time()
 
+    # ── visualization state (world-frame markers) ─────────────────────────────
+    viz_target = np.zeros(3)
+    viz_target_quat = np.array([1.0, 0.0, 0.0, 0.0])
+    viz_ee = np.zeros(3)
+    viz_vel_from = np.zeros(3)
+    viz_vel_to = np.zeros(3)
+    viz_ready = False
+
     with mujoco.viewer.launch_passive(model, data) as viewer:
         setup_tracking_camera(viewer, model)
 
@@ -255,8 +368,8 @@ def main() -> None:
                 gravity_vec      = get_gravity_orientation(quat).unsqueeze(0)
 
                 # leg joints: remap Isaac → MuJoCo; arm joints: pass through
-                leg_pos_reordered = qj_rel[:, :12][:, ISAAC_TO_MUJOCO]
-                leg_vel_reordered = dqj[:, :12][:, ISAAC_TO_MUJOCO]
+                leg_pos_reordered = qj_rel[:, :12][:, mujoco_to_policy]
+                leg_vel_reordered = dqj[:, :12][:, mujoco_to_policy]
 
                 # ── update history buffers ────────────────────────────────────
                 base_ang_vel_obs      = _roll_append(base_ang_vel_obs,      omega,             3)
@@ -279,15 +392,45 @@ def main() -> None:
 
                 # ── policy inference ──────────────────────────────────────────
                 if time.time() - last_policy_time > 3.0:
-                    action = policy(hist_obs).clamp(-20.0, 20.0)
+                    action = policy(hist_obs).clamp(-action_clip, action_clip)
 
                 # remap leg actions back to MuJoCo joint order
-                leg_action  = action[:, :12][:, ISAAC_TO_MUJOCO]
+                leg_action  = action[:, :12][:, policy_to_mujoco]
                 arm_action  = action[:, 12:]
                 action_out  = torch.cat([leg_action, arm_action], dim=-1)
 
                 target_dof_pos = action_out * action_scale + default_angles
 
+                # ── command visualization ─────────────────────────────────────
+                # pos_command is the mixed frame: xy in the body frame, z is the
+                # world height.  Convert the xy part to world for the marker.
+                base_pos = np.array(data.qpos[0:3], dtype=float)
+                qw, qx, qy, qz = (float(v) for v in data.qpos[3:7])
+                yaw = float(np.arctan2(
+                    2.0 * (qw * qz + qx * qy), 1.0 - 2.0 * (qy * qy + qz * qz)))
+                cy, sy = np.cos(yaw), np.sin(yaw)
+                px, py, pz = (float(pos_command[0, 0]),
+                              float(pos_command[0, 1]),
+                              float(pos_command[0, 2]))
+                viz_target[:] = (base_pos[0] + cy * px - sy * py,
+                                 base_pos[1] + sy * px + cy * py,
+                                 pz)
+                # target orientation: mixed command is relative to the base, so
+                # the world orientation is base_quat * cmd_quat.
+                viz_target_quat[:] = _quat_mul_wxyz(
+                    np.array([qw, qx, qy, qz], dtype=float),
+                    np.asarray(pos_command[0, 3:7], dtype=float))
+                viz_ee[:] = np.asarray(data.body("end_effector").xpos, dtype=float)
+                vx_cmd, vy_cmd = float(vel_command[0, 0]), float(vel_command[0, 1])
+                viz_vel_from[:] = (base_pos[0], base_pos[1], base_pos[2] + 0.08)
+                viz_vel_to[:] = (base_pos[0] + (cy * vx_cmd - sy * vy_cmd) * 0.6,
+                                 base_pos[1] + (sy * vx_cmd + cy * vy_cmd) * 0.6,
+                                 base_pos[2] + 0.08)
+                viz_ready = True
+
+            if viz_ready:
+                draw_command_viz(viewer, viz_target, viz_target_quat,
+                                 viz_ee, viz_vel_from, viz_vel_to)
             viewer.sync()
 
             # ── real-time pacing ──────────────────────────────────────────────

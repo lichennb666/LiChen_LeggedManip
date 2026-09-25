@@ -1,0 +1,15 @@
+arm:
+  default_planner_config: RRTConnect
+  planner_configs:
+    - RRTConnect
+    - RRT
+    - RRTstar
+    - PRM
+    - PRMstar
+  projection_evaluator: joints(joint1,joint2)
+  longest_valid_segment_fraction: 0.01
+
+gripper:
+  default_planner_config: JointSpace
+  planner_configs:
+    - JointSpace

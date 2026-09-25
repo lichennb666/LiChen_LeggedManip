@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="manual_grasp">
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros><namespace>/gazebo</namespace></ros>
+      <update_rate>50.0</update_rate>
+    </plugin>
+    <gui fullscreen="false">
+      <camera name="manual_grasp_overview">
+        <pose>-1.35 -1.85 1.15 0 0.42 0.75</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+    <physics name="ode" type="ode">
+      <max_step_size>0.005</max_step_size>
+      <real_time_update_rate>200</real_time_update_rate>
+      <ode><solver><type>quick</type><iters>100</iters><sor>1.0</sor></solver></ode>
+    </physics>
+    <gravity>0 0 -9.81</gravity>
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+
+    <!-- A floor-standing handled load, pre-aligned with the neutral Piper
+         gripper.  No camera, table, marker, or perception dependency exists. -->
+    <model name="target_box">
+      <static>false</static>
+      <!-- Pre-aligned with the neutral-policy gripper after WBC startup. -->
+      <pose>0.50 0.20 0.20 0 0 0</pose>
+      <link name="body">
+        <inertial>
+          <mass>0.60</mass>
+          <inertia><ixx>0.0113</ixx><iyy>0.0090</iyy><izz>0.0029</izz></inertia>
+        </inertial>
+        <collision name="body_collision">
+          <surface>
+            <friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode></friction>
+            <contact><ode><kp>300000</kp><kd>30</kd><max_vel>0.005</max_vel><min_depth>0.001</min_depth></ode></contact>
+          </surface>
+          <geometry><box><size>0.18 0.16 0.40</size></box></geometry>
+        </collision>
+        <visual name="body_visual">
+          <geometry><box><size>0.18 0.16 0.40</size></box></geometry>
+          <material><ambient>0.12 0.28 0.62 1</ambient><diffuse>0.16 0.38 0.82 1</diffuse></material>
+        </visual>
+      </link>
+      <link name="handle">
+        <pose>-0.145 0 0.325 0 0 0</pose>
+        <inertial>
+          <mass>0.03</mass>
+          <inertia><ixx>0.00002</ixx><iyy>0.00002</iyy><izz>0.000003</izz></inertia>
+        </inertial>
+        <collision name="grip_collision">
+          <surface>
+            <friction><ode><mu>15.0</mu><mu2>15.0</mu2></ode></friction>
+            <contact><ode><kp>300000</kp><kd>30</kd><max_vel>0.005</max_vel><min_depth>0.001</min_depth></ode></contact>
+          </surface>
+          <geometry><box><size>0.018 0.018 0.080</size></box></geometry>
+        </collision>
+        <collision name="upper_mount_collision">
+          <pose>0.055 0 0.040 0 0 0</pose>
+          <geometry><box><size>0.110 0.018 0.018</size></box></geometry>
+        </collision>
+        <collision name="lower_mount_collision">
+          <pose>0.055 0 -0.040 0 0 0</pose>
+          <geometry><box><size>0.110 0.018 0.018</size></box></geometry>
+        </collision>
+        <visual name="grip_visual">
+          <geometry><box><size>0.018 0.018 0.080</size></box></geometry>
+          <material><ambient>0.8 0.55 0.05 1</ambient><diffuse>1 0.72 0.08 1</diffuse></material>
+        </visual>
+        <visual name="upper_mount_visual">
+          <pose>0.055 0 0.040 0 0 0</pose>
+          <geometry><box><size>0.110 0.018 0.018</size></box></geometry>
+          <material><ambient>0.8 0.55 0.05 1</ambient><diffuse>1 0.72 0.08 1</diffuse></material>
+        </visual>
+        <visual name="lower_mount_visual">
+          <pose>0.055 0 -0.040 0 0 0</pose>
+          <geometry><box><size>0.110 0.018 0.018</size></box></geometry>
+          <material><ambient>0.8 0.55 0.05 1</ambient><diffuse>1 0.72 0.08 1</diffuse></material>
+        </visual>
+      </link>
+      <joint name="body_to_handle" type="fixed">
+        <parent>body</parent><child>handle</child>
+      </joint>
+    </model>
+  </world>
+</sdf>

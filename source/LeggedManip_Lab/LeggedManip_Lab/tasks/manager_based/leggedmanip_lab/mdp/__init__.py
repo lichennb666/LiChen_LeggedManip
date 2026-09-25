@@ -24,3 +24,8 @@ from .curriculums import *  # noqa: F401, F403
 from .observations import *
 from .pose_command_wbc import *
 from .pose_command_b import *
+# [VBC-NEW] Keep the hierarchical teacher action/MDP terms opt-in through the
+# GO2-PIPER-VBC-Teacher task; existing tasks do not use these symbols.
+from .vbc_actions import *
+from .vbc_mdp import *
+from .vbc_models import *

@@ -1,0 +1,11 @@
+go2_piper_color_detector:
+  ros__parameters:
+    rgb_topic: /demo_camera/image_raw
+    depth_topic: /demo_camera/depth/image_raw
+    info_topic: /demo_camera/camera_info
+    output_frame: odom
+    min_area: 250
+    h_min: 45
+    h_max: 85
+    s_min: 100
+    v_min: 80

@@ -1,0 +1,9 @@
+{
+  "FR_hip_joint": -0.1, "FR_thigh_joint": 0.8, "FR_calf_joint": -1.5,
+  "FL_hip_joint": 0.1, "FL_thigh_joint": 0.8, "FL_calf_joint": -1.5,
+  "RR_hip_joint": -0.1, "RR_thigh_joint": 1.0, "RR_calf_joint": -1.5,
+  "RL_hip_joint": 0.1, "RL_thigh_joint": 1.0, "RL_calf_joint": -1.5,
+  "joint1": 0.0, "joint2": 1.24, "joint3": -0.764,
+  "joint4": 0.005, "joint5": -0.391, "joint6": -0.032,
+  "joint7": 0.04, "joint8": -0.04
+}

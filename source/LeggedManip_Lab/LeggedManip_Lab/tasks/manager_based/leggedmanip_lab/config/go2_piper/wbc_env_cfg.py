@@ -28,9 +28,13 @@ class WBCCommandsCfg:
         resampling_time_range=(8.0, 10.0),
         debug_vis=True,
         ranges=mdp.command_cfg.UniformPoseWBCCommandCfg.Ranges(
-            pos_x=(0.4, 0.45),
-            pos_y=(-0.05, 0.05),
-            pos_z=(0.5, 0.5),  # World frame
+            # [WBC-WIDER-EE] Widened so the low-level WBC actually learns the
+            # workspace the VBC grasp/lift needs.  The old range was only
+            # x in (0.40, 0.45), y in (-0.05, 0.05), z == 0.50, which made the
+            # tabletop cube (x ~= 0.62, lift to z ~= 0.65) unreachable.
+            pos_x=(0.35, 0.65),
+            pos_y=(-0.20, 0.20),
+            pos_z=(0.40, 0.70),  # World frame
             roll=(-0.0, 0.0),
             pitch=(-0.0, -0.0),  # depends on end-effector axis
             yaw=(-0.0, -0.0),
@@ -87,6 +91,14 @@ class Go2PiperWBCEnvCfg(LeggedManipLabEnvCfg):
 
         # commands
         # self.commands.ee_pose.curriculum_enabled = True
+        self.events.reset_base.params["pose_range"] = {
+            "x": (-0.8, 0.8),
+            "y": (-0.8, 0.8),
+            "z": (-0.05, 0.08),
+            "roll": (-0.15, 0.15),
+            "pitch": (-0.15, 0.15),
+            "yaw": (-1.57, 1.57),
+        }
         
         # actions
         self.actions.joint_pos.scale = 0.25
@@ -95,10 +107,48 @@ class Go2PiperWBCEnvCfg(LeggedManipLabEnvCfg):
         # rewards
         self.rewards.track_base_height_exp.params["target_height"] = 0.28
         self.rewards.end_effector_position_tracking_exp.func = mdp.position_command_error_exp
-        self.rewards.end_effector_position_tracking_exp.weight = 4.5
-        self.rewards.end_effector_orientation_tracking.weight = -4.0
+        self.rewards.end_effector_position_tracking_exp.weight = 6.0
+        # [WBC-PRECISION] Sharpen the position tracking kernel from ~0.316 to
+        # 0.06 so the WBC is actually rewarded for centimetre-level accuracy
+        # (the old kernel barely distinguished 5 cm from 15 cm).
+        self.rewards.end_effector_position_tracking_exp.params["std"] = 0.06
+        # [WBC-PRECISION] Orientation is a linear penalty, so it needs a larger
+        # weight to balance the now-sharp position reward (position got 6x
+        # sharper; orientation would otherwise be sacrificed).
+        self.rewards.end_effector_orientation_tracking.weight = -8.0
         self.rewards.track_lin_vel_xy_exp.weight = 3.5
-        self.rewards.track_ang_vel_z_exp.weight = 2.5
+        self.rewards.track_ang_vel_z_exp.weight = 4.0
+        # Gazebo sim2sim / navigation readiness: sharp stand-still bonus when
+        # the velocity command is near zero (prevents zero-command drift), and
+        # a sharp low-speed tracking kernel for precise navigation corrections.
+        self.rewards.stand_still_bonus = RewTerm(
+            func=mdp.stand_still_bonus,
+            weight=2.0,
+            params={
+                "command_name": "base_velocity",
+                "std": 0.05,
+                "deadband": 0.05,
+            },
+        )
+        self.rewards.track_lin_vel_low_speed_exp = RewTerm(
+            func=mdp.track_lin_vel_low_speed_exp,
+            weight=1.5,
+            params={
+                "command_name": "base_velocity",
+                "std": 0.05,
+                "low_speed_threshold": 0.2,
+            },
+        )
+        self.rewards.track_ang_vel_low_speed_exp = RewTerm(
+            func=mdp.track_ang_vel_low_speed_exp,
+            weight=2.0,
+            params={
+                "command_name": "base_velocity",
+                "std": 0.35,
+                "low_speed_threshold": 0.35,
+                "yaw_deadband": 0.05,
+            },
+        )
 
         self.rewards.track_base_height_exp.weight = 0.25
         self.rewards.flat_orientation_l2.weight = -0.5

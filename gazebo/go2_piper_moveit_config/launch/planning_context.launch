@@ -1,0 +1,16 @@
+<launch>
+  <!-- Load robot description (URDF) -->
+  <param name="robot_description" textfile="$(find go2_piper_description)/urdf/go2_piper.urdf"/>
+
+  <!-- Load SRDF (semantic description) -->
+  <param name="robot_description_semantic" textfile="$(find go2_piper_moveit_config)/config/go2_piper.srdf"/>
+
+  <!-- Joint limits -->
+  <rosparam command="load" file="$(find go2_piper_moveit_config)/config/joint_limits.yaml"/>
+
+  <!-- Kinematics -->
+  <rosparam command="load" file="$(find go2_piper_moveit_config)/config/kinematics.yaml"/>
+
+  <!-- Planning config -->
+  <rosparam command="load" file="$(find go2_piper_moveit_config)/config/ompl_planning.yaml"/>
+</launch>

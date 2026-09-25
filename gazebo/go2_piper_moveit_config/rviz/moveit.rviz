@@ -1,0 +1,32 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+  - Class: rviz/Views
+    Name: Views
+Visualization Manager:
+  Displays:
+    - Class: moveit_rviz_plugin/MotionPlanning
+      Name: MotionPlanning
+      Enabled: true
+      Move Group Namespace: /
+      Planning Group: arm
+      Planning Scene Topic: /planning_scene
+      Robot Description: robot_description
+      Scene Geometry:
+        Scene Alpha: 0.6
+        Scene Color: [0.3, 0.3, 0.3]
+      Trajectory Topic: /move_group/display_planned_path
+    - Class: rviz/TF
+      Name: TF
+      Enabled: true
+    - Class: rviz/RobotModel
+      Name: RobotModel
+      Enabled: true
+      Robot Description: robot_description
+  Global Options:
+    Fixed Frame: base
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 3.0
+      Focal Point: [0.3, 0, 0.5]

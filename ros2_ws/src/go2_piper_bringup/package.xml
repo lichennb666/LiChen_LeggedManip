@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>go2_piper_bringup</name>
+  <version>0.1.0</version>
+  <description>Launch and world files for the Go2-Piper WBC demo.</description>
+  <maintainer email="lili@robot.com">lili</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_python</buildtool_depend>
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>gazebo_ros</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>controller_manager</depend>
+  <depend>tf2_ros</depend>
+  <depend>go2_piper_description</depend>
+  <depend>go2_piper_policy_controller</depend>
+  <depend>go2_piper_wbc</depend>
+  <depend>go2_piper_perception</depend>
+  <depend>go2_piper_mission</depend>
+  <depend>go2_piper_interfaces</depend>
+  <depend>fast_lio</depend>
+  <depend>open3d_loc</depend>
+  <depend>go2_config</depend>
+  <depend>livox_laser_simulation</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>actionlib_msgs</depend>
+  <export><build_type>ament_python</build_type></export>
+</package>

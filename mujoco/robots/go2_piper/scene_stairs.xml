@@ -1,0 +1,56 @@
+<mujoco model="go2piper stairs scene">
+  <include file="go2piper.xml"/>
+
+  <statistic center="2.0 -10 0.5" extent="3.0"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="-130" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3"
+      markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    <material name="stair" rgba="0.7 0.7 0.65 1"/>
+    <material name="stair_edge" rgba="0.9 0.6 0.2 1"/>
+  </asset>
+
+  <worldbody>
+    <light pos="3 -10 3" dir="0 -0.3 -1" directional="true"/>
+    <light pos="-1 -10 2" dir="0 0 -1" directional="true"/>
+
+    <!-- Flat ground -->
+    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane" friction="1.5 0.5 0.5"/>
+
+    <!-- Staircase: 10 steps, 20cm deep, 10cm high, 1.5m wide, starting 1.5m ahead of robot -->
+    <geom name="step1"  type="box" pos="1.5 -10 0.050" size="0.10 0.75 0.050" material="stair"/>
+    <geom name="step2"  type="box" pos="1.7 -10 0.150" size="0.10 0.75 0.100" material="stair"/>
+    <geom name="step3"  type="box" pos="1.9 -10 0.250" size="0.10 0.75 0.150" material="stair"/>
+    <geom name="step4"  type="box" pos="2.1 -10 0.350" size="0.10 0.75 0.200" material="stair"/>
+    <geom name="step5"  type="box" pos="2.3 -10 0.450" size="0.10 0.75 0.250" material="stair"/>
+    <geom name="step6"  type="box" pos="2.5 -10 0.550" size="0.10 0.75 0.300" material="stair"/>
+    <geom name="step7"  type="box" pos="2.7 -10 0.650" size="0.10 0.75 0.350" material="stair"/>
+    <geom name="step8"  type="box" pos="2.9 -10 0.750" size="0.10 0.75 0.400" material="stair"/>
+    <geom name="step9"  type="box" pos="3.1 -10 0.850" size="0.10 0.75 0.450" material="stair"/>
+    <geom name="step10" type="box" pos="3.3 -10 0.950" size="0.10 0.75 0.500" material="stair"/>
+
+    <!-- Top platform -->
+    <geom name="platform" type="box" pos="3.7 -10 1.000" size="0.30 0.75 0.525" material="stair"/>
+
+    <!-- Step edge markers for visibility -->
+    <geom name="edge1"  type="box" pos="1.6 -10 0.055" size="0.005 0.75 0.005" material="stair_edge"/>
+    <geom name="edge2"  type="box" pos="1.8 -10 0.155" size="0.005 0.75 0.005" material="stair_edge"/>
+    <geom name="edge3"  type="box" pos="2.0 -10 0.255" size="0.005 0.75 0.005" material="stair_edge"/>
+    <geom name="edge4"  type="box" pos="2.2 -10 0.355" size="0.005 0.75 0.005" material="stair_edge"/>
+    <geom name="edge5"  type="box" pos="2.4 -10 0.455" size="0.005 0.75 0.005" material="stair_edge"/>
+    <geom name="edge6"  type="box" pos="2.6 -10 0.555" size="0.005 0.75 0.005" material="stair_edge"/>
+    <geom name="edge7"  type="box" pos="2.8 -10 0.655" size="0.005 0.75 0.005" material="stair_edge"/>
+    <geom name="edge8"  type="box" pos="3.0 -10 0.755" size="0.005 0.75 0.005" material="stair_edge"/>
+    <geom name="edge9"  type="box" pos="3.2 -10 0.855" size="0.005 0.75 0.005" material="stair_edge"/>
+    <geom name="edge10" type="box" pos="3.4 -10 0.955" size="0.005 0.75 0.005" material="stair_edge"/>
+
+  </worldbody>
+</mujoco>

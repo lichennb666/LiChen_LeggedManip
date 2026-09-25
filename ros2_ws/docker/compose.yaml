@@ -1,0 +1,28 @@
+services:
+  go2-piper-humble:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: go2-piper-humble:latest
+    network_mode: host
+    ipc: host
+    environment:
+      DISPLAY: ${DISPLAY}
+      XAUTHORITY: /tmp/.Xauthority
+      QT_X11_NO_MITSHM: "1"
+      # Gazebo Classic otherwise blocks the viewport while trying to refresh
+      # the online model database, which is unavailable in offline containers.
+      GAZEBO_MODEL_DATABASE_URI: ""
+      GAZEBO_MODEL_PATH: /workspace/LeggedManip_Lab/ros2_ws/install/go2_piper_description/share:/usr/share/gazebo-11/models
+      ROS_DOMAIN_ID: "42"
+    devices:
+      - /dev/dri:/dev/dri
+    volumes:
+      - ../../:/workspace/LeggedManip_Lab
+      # Legacy visual mesh directories are absolute symlinks into these two
+      # local projects; the description build dereferences them into its output.
+      - /home/lili/unitree_rl_gym:/home/lili/unitree_rl_gym:ro
+      - /home/lili/piper_ws:/home/lili/piper_ws:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${XAUTHORITY:-/run/user/1000/gdm/Xauthority}:/tmp/.Xauthority:ro
+    working_dir: /workspace/LeggedManip_Lab/ros2_ws

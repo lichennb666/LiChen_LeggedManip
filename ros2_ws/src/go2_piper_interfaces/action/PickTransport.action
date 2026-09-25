@@ -1,0 +1,11 @@
+string target_color
+geometry_msgs/PoseStamped drop_pose
+---
+bool success
+string error_code
+string message
+---
+string state
+uint8 retry_count
+float32 progress
+

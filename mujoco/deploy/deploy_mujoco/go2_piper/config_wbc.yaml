@@ -4,50 +4,7 @@ xml_path: "{CURRENT_ROOT_DIR}/robots/go2_piper/scene.xml"
 
 # Total simulation time
 simulation_duration: 600.0
-# Simulation time step
-simulation_dt: 0.005
-# Controller update frequency (meets the requirement of simulation_dt * controll_decimation=0.02; 50Hz)
-control_decimation: 4
-
-kps: [30.00, 30.00, 30.00, 
-      30.00, 30.00, 30.00, 
-      30.00, 30.00, 30.00, 
-      30.00, 30.00, 30.00,
-      40.0, 40.0, 40.0, 20.0, 20.0, 20.0] 
-
-
-action_scale: [0.25,0.25,0.25,
-               0.25,0.25,0.25,
-               0.25,0.25,0.25,
-               0.25,0.25,0.25,
-               0.25,0.25,0.25,
-               0.25,0.25,0.25]
-
-kds: [0.8, 0.8, 0.8, 
-      0.8, 0.8, 0.8, 
-      0.8, 0.8, 0.8, 
-      0.8, 0.8, 0.8,
-      1.0, 1.0, 1.0, 1.0 , 1.0, 1.0] 
-      # 3.0, 3.0, 3.0, 1.0 , 3.0, 1.0] 
-
-# -- joint order 
-# "FR_hip_joint", "FR_thigh_joint", "FR_calf_joint",
-# "FL_hip_joint", "FL_thigh_joint", "FL_calf_joint",
-# "RR_hip_joint", "RR_thigh_joint", "RR_calf_joint",
-# "RL_hip_joint", "RL_thigh_joint", "RL_calf_joint",
-# "joint1"       , "joint2"      , "joint3"        , 
-# "joint4", "joint5"   , "joint6"
-
-
-default_angles: [0.1,  0.8,  -1.5,  -0.1, 0.8, -1.5, 
-                 0.1,  1.0,  -1.5,  -0.1, 1.0, -1.5,
-                 0.0,  0.0,  -0.0,  0.0, -0.0, 0.0] 
-
-
-num_actions: 18
-num_hist: 3
 num_env: 1
 
-base_ang_vel_scale: 0.2
-joint_vel_scale: 0.05
-
+# Joint order, defaults, gains, clips, observation scales and rates come from
+# ros2_ws/src/go2_piper_wbc/config/policy_contract.yaml.

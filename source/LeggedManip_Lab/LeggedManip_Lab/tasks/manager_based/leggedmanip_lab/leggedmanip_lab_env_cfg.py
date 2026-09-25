@@ -99,9 +99,10 @@ class EventCfg:
         mode="startup",
         params={
             "asset_cfg": SceneEntityCfg("robot", body_names=".*"),
-            "static_friction_range": (0.5, 1.2),
-            "dynamic_friction_range": (0.5, 1.2),
-            "restitution_range": (0.0, 0.1),
+            # Widened for DART-domain adaptation (targeted at mu=2.0 in Gazebo Sim/DART world).
+            "static_friction_range": (0.3, 2.5),
+            "dynamic_friction_range": (0.3, 2.5),
+            "restitution_range": (0.0, 0.15),
             "num_buckets": 64,
             "make_consistent": True,
         },
@@ -131,9 +132,21 @@ class EventCfg:
         mode="reset",
         params={
             "asset_cfg": SceneEntityCfg("robot", joint_names=".*"),
-            "stiffness_distribution_params": (0.8, 1.2),
-            "damping_distribution_params": (0.8, 1.2),
-            "operation": "scale",
+            # Use additive randomization to match Phase-6 adaptation plan.
+            "stiffness_distribution_params": (-2.0, 2.0),
+            "damping_distribution_params": (-0.5, 0.5),
+            "operation": "add",
+        },
+    )
+
+    randomize_joint_parameters = EventTerm(
+        func=mdp.randomize_joint_parameters,
+        mode="startup",
+        params={
+            "asset_cfg": SceneEntityCfg("robot", joint_names=".*"),
+            "friction_distribution_params": (-0.02, 0.12),
+            "armature_distribution_params": (0.0, 0.03),
+            "operation": "add",
         },
     )
 
@@ -142,7 +155,7 @@ class EventCfg:
         mode="startup",
         params={
             "asset_cfg": SceneEntityCfg("robot", body_names=".*"),
-            "inertia_distribution_params": (0.8, 1.2),
+            "inertia_distribution_params": (0.7, 1.3),
             "operation": "scale",
         },
     )
@@ -167,9 +180,9 @@ class EventCfg:
                 "x": (-0.0, 0.0),
                 "y": (-0.0, 0.0),
                 "z": (-0.0, 0.0),
-                "yaw": (-0.0, 0.0),
-                "pitch": (-0.0, 0.0),
                 "roll": (-0.0, 0.0),
+                "pitch": (-0.0, 0.0),
+                "yaw": (-0.0, 0.0),
             },
         },
     )

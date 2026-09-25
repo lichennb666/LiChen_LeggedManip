@@ -1,0 +1,797 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="go2_piper">
+  <link name="base">
+    <inertial>
+      <origin xyz="0.021112 0 -0.005366" rpy="0 0 0" />
+      <mass value="6.921" />
+      <inertia ixx="0.02448" ixy="0.00012166" ixz="0.0014849" iyy="0.098077" iyz="-3.12E-05" izz="0.107" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/base.dae" />
+      </geometry>
+      <material name="inline_material_0">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <box size="0.3762 0.0935 0.114" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="FL_hip">
+    <inertial>
+      <origin xyz="-0.0054 0.00194 -0.000105" rpy="0 0 0" />
+      <mass value="0.678" />
+      <inertia ixx="0.01048" ixy="-3.01e-06" ixz="1.11e-06" iyy="0.000884" iyz="-1.42e-06" izz="0.000596" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/hip.dae" />
+      </geometry>
+      <material name="inline_material_1">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0.08 0" />
+      <geometry>
+        <cylinder length="0.04" radius="0.046" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="FL_thigh">
+    <inertial>
+      <origin xyz="-0.00374 -0.0223 -0.0327" rpy="0 0 0" />
+      <mass value="1.152" />
+      <inertia ixx="0.00584" ixy="8.72e-05" ixz="-0.000289" iyy="0.0158" iyz="0.000808" izz="0.00103" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/thigh.dae" />
+      </geometry>
+      <material name="inline_material_2">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065" />
+      <geometry>
+        <box size="0.11 0.0245 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="FL_calf">
+    <inertial>
+      <origin xyz="0.00548 -0.000975 -0.115" rpy="0 0 0" />
+      <mass value="0.154" />
+      <inertia ixx="0.00108" ixy="3.4e-07" ixz="1.72e-05" iyy="0.0111" iyz="8.28e-06" izz="3.29e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/calf.dae" />
+      </geometry>
+      <material name="inline_material_3">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -0.21 0" xyz="0.008 0 -0.06" />
+      <geometry>
+        <cylinder length="0.12" radius="0.012" />
+      </geometry>
+    </collision>
+    <collision name="FL_lower_calf_collision">
+      <origin xyz="0.02 0 -0.148" rpy="0 0.05 0" />
+      <geometry>
+        <cylinder length="0.065" radius="0.011" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="FL_foot">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.04" />
+      <inertia ixx="9.6e-06" ixy="0" ixz="0" iyy="9.6e-06" iyz="0" izz="9.6e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/foot.dae" />
+      </geometry>
+      <material name="inline_material_4">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="FL_foot_collision">
+      <origin rpy="0 0 0" xyz="-0.002 0 0" />
+      <geometry>
+        <sphere radius="0.022" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="FR_hip">
+    <inertial>
+      <origin xyz="-0.0054 -0.00194 -0.000105" rpy="0 0 0" />
+      <mass value="0.678" />
+      <inertia ixx="0.01048" ixy="3.01e-06" ixz="1.11e-06" iyy="0.000884" iyz="1.42e-06" izz="0.000596" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="3.1415 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/hip.dae" />
+      </geometry>
+      <material name="inline_material_5">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 -0.08 0" />
+      <geometry>
+        <cylinder length="0.04" radius="0.046" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="FR_thigh">
+    <inertial>
+      <origin xyz="-0.00374 0.0223 -0.0327" rpy="0 0 0" />
+      <mass value="1.152" />
+      <inertia ixx="0.00584" ixy="-8.72e-05" ixz="-0.000289" iyy="0.0158" iyz="-0.000808" izz="0.00103" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/thigh_mirror.dae" />
+      </geometry>
+      <material name="inline_material_6">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065" />
+      <geometry>
+        <box size="0.11 0.0245 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="FR_calf">
+    <inertial>
+      <origin xyz="0.00548 0.000975 -0.115" rpy="0 0 0" />
+      <mass value="0.154" />
+      <inertia ixx="0.00108" ixy="-3.4e-07" ixz="1.72e-05" iyy="0.0111" iyz="-8.28e-06" izz="3.29e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/calf_mirror.dae" />
+      </geometry>
+      <material name="inline_material_7">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -0.2 0" xyz="0.01 0 -0.06" />
+      <geometry>
+        <cylinder length="0.12" radius="0.013" />
+      </geometry>
+    </collision>
+    <collision name="FR_lower_calf_collision">
+      <origin xyz="0.02 0 -0.148" rpy="0 0.05 0" />
+      <geometry>
+        <cylinder length="0.065" radius="0.011" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="FR_foot">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.04" />
+      <inertia ixx="9.6e-06" ixy="0" ixz="0" iyy="9.6e-06" iyz="0" izz="9.6e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/foot.dae" />
+      </geometry>
+      <material name="inline_material_8">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="FR_foot_collision">
+      <origin rpy="0 0 0" xyz="-0.002 0 0" />
+      <geometry>
+        <sphere radius="0.022" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RL_hip">
+    <inertial>
+      <origin xyz="0.0054 0.00194 -0.000105" rpy="0 0 0" />
+      <mass value="0.678" />
+      <inertia ixx="0.01048" ixy="3.01e-06" ixz="-1.11e-06" iyy="0.000884" iyz="-1.42e-06" izz="0.000596" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 3.1415 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/hip.dae" />
+      </geometry>
+      <material name="inline_material_9">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0.08 0" />
+      <geometry>
+        <cylinder length="0.04" radius="0.046" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RL_thigh">
+    <inertial>
+      <origin xyz="-0.00374 -0.0223 -0.0327" rpy="0 0 0" />
+      <mass value="1.152" />
+      <inertia ixx="0.00584" ixy="8.72e-05" ixz="-0.000289" iyy="0.0158" iyz="0.000808" izz="0.00103" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/thigh.dae" />
+      </geometry>
+      <material name="inline_material_10">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065" />
+      <geometry>
+        <box size="0.11 0.0245 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RL_calf">
+    <inertial>
+      <origin xyz="0.00548 -0.000975 -0.115" rpy="0 0 0" />
+      <mass value="0.154" />
+      <inertia ixx="0.00108" ixy="3.4e-07" ixz="1.72e-05" iyy="0.0111" iyz="8.28e-06" izz="3.29e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/calf.dae" />
+      </geometry>
+      <material name="inline_material_11">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -0.2 0" xyz="0.01 0 -0.06" />
+      <geometry>
+        <cylinder length="0.12" radius="0.013" />
+      </geometry>
+    </collision>
+    <collision name="RL_lower_calf_collision">
+      <origin xyz="0.02 0 -0.148" rpy="0 0.05 0" />
+      <geometry>
+        <cylinder length="0.065" radius="0.011" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RL_foot">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.04" />
+      <inertia ixx="9.6e-06" ixy="0" ixz="0" iyy="9.6e-06" iyz="0" izz="9.6e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/foot.dae" />
+      </geometry>
+      <material name="inline_material_12">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="RL_foot_collision">
+      <origin rpy="0 0 0" xyz="-0.002 0 0" />
+      <geometry>
+        <sphere radius="0.022" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RR_hip">
+    <inertial>
+      <origin xyz="0.0054 -0.00194 -0.000105" rpy="0 0 0" />
+      <mass value="0.678" />
+      <inertia ixx="0.01048" ixy="-3.01e-06" ixz="-1.11e-06" iyy="0.000884" iyz="1.42e-06" izz="0.000596" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="3.1415 3.1415 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/hip.dae" />
+      </geometry>
+      <material name="inline_material_13">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 -0.08 0" />
+      <geometry>
+        <cylinder length="0.04" radius="0.046" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RR_thigh">
+    <inertial>
+      <origin xyz="-0.00374 0.0223 -0.0327" rpy="0 0 0" />
+      <mass value="1.152" />
+      <inertia ixx="0.00584" ixy="-8.72e-05" ixz="-0.000289" iyy="0.0158" iyz="-0.000808" izz="0.00103" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/thigh_mirror.dae" />
+      </geometry>
+      <material name="inline_material_14">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065" />
+      <geometry>
+        <box size="0.11 0.0245 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RR_calf">
+    <inertial>
+      <origin xyz="0.00548 0.000975 -0.115" rpy="0 0 0" />
+      <mass value="0.154" />
+      <inertia ixx="0.00108" ixy="-3.4e-07" ixz="1.72e-05" iyy="0.0111" iyz="-8.28e-06" izz="3.29e-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/calf_mirror.dae" />
+      </geometry>
+      <material name="inline_material_15">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 -0.2 0" xyz="0.01 0 -0.06" />
+      <geometry>
+        <cylinder length="0.12" radius="0.013" />
+      </geometry>
+    </collision>
+    <collision name="RR_lower_calf_collision">
+      <origin xyz="0.02 0 -0.148" rpy="0 0.05 0" />
+      <geometry>
+        <cylinder length="0.065" radius="0.011" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RR_foot">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.04" />
+      <inertia ixx="9.6e-06" ixy="0" ixz="0" iyy="9.6e-06" iyz="0" izz="9.6e-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/go2_dae/foot.dae" />
+      </geometry>
+      <material name="inline_material_16">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="RR_foot_collision">
+      <origin rpy="0 0 0" xyz="-0.002 0 0" />
+      <geometry>
+        <sphere radius="0.022" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FL_hip_joint" type="revolute">
+    <origin xyz="0.1934 0.0465 0" rpy="0 0 0" />
+    <parent link="base" />
+    <child link="FL_hip" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.0472" upper="1.0472" effort="23.7" velocity="30.1" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="FL_thigh_joint" type="revolute">
+    <origin xyz="0 0.0955 0" rpy="0 0 0" />
+    <parent link="FL_hip" />
+    <child link="FL_thigh" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.5708" upper="3.4907" effort="23.7" velocity="30.1" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="FL_calf_joint" type="revolute">
+    <origin xyz="0 0 -0.213" rpy="0 0 0" />
+    <parent link="FL_thigh" />
+    <child link="FL_calf" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.7227" upper="-0.83776" effort="35.55" velocity="20.07" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="FR_hip_joint" type="revolute">
+    <origin xyz="0.1934 -0.0465 0" rpy="0 0 0" />
+    <parent link="base" />
+    <child link="FR_hip" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.0472" upper="1.0472" effort="23.7" velocity="30.1" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="FR_thigh_joint" type="revolute">
+    <origin xyz="0 -0.0955 0" rpy="0 0 0" />
+    <parent link="FR_hip" />
+    <child link="FR_thigh" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.5708" upper="3.4907" effort="23.7" velocity="30.1" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="FR_calf_joint" type="revolute">
+    <origin xyz="0 0 -0.213" rpy="0 0 0" />
+    <parent link="FR_thigh" />
+    <child link="FR_calf" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.7227" upper="-0.83776" effort="35.55" velocity="20.07" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="RL_hip_joint" type="revolute">
+    <origin xyz="-0.1934 0.0465 0" rpy="0 0 0" />
+    <parent link="base" />
+    <child link="RL_hip" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.0472" upper="1.0472" effort="23.7" velocity="30.1" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="RL_thigh_joint" type="revolute">
+    <origin xyz="0 0.0955 0" rpy="0 0 0" />
+    <parent link="RL_hip" />
+    <child link="RL_thigh" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.5236" upper="4.5379" effort="23.7" velocity="30.1" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="RL_calf_joint" type="revolute">
+    <origin xyz="0 0 -0.213" rpy="0 0 0" />
+    <parent link="RL_thigh" />
+    <child link="RL_calf" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.7227" upper="-0.83776" effort="35.55" velocity="20.07" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="RR_hip_joint" type="revolute">
+    <origin xyz="-0.1934 -0.0465 0" rpy="0 0 0" />
+    <parent link="base" />
+    <child link="RR_hip" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.0472" upper="1.0472" effort="23.7" velocity="30.1" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="RR_thigh_joint" type="revolute">
+    <origin xyz="0 -0.0955 0" rpy="0 0 0" />
+    <parent link="RR_hip" />
+    <child link="RR_thigh" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.5236" upper="4.5379" effort="23.7" velocity="30.1" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="RR_calf_joint" type="revolute">
+    <origin xyz="0 0 -0.213" rpy="0 0 0" />
+    <parent link="RR_thigh" />
+    <child link="RR_calf" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.7227" upper="-0.83776" effort="35.55" velocity="20.07" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <link name="link0">
+    <inertial>
+      <origin rpy="0.0 0.0 0.0" xyz="-0.00979274765955341 1.82905827587138e-06 0.0410100126360189" />
+      <mass value="0.1625485674036938" />
+      <inertia ixx="0.000226596924525071" ixy="-7.33972270153965e-08" ixz="2.13249977802622e-06" iyy="0.000269444772561524" iyz="8.15169009611054e-09" izz="0.000222318258878636" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/piper_dae/base_link.dae" />
+      </geometry>
+      <material name="inline_material_17">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <box size="0.16 0.16 0.08" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="link1">
+    <inertial>
+      <origin rpy="1.6397574390544578 0.04512936290874903 -0.0029654294326438135" xyz="0.000121505 0.000104632 -0.00438597" />
+      <mass value="0.71" />
+      <inertia ixx="0.000509614771115" ixy="-0.00044960991152" ixz="3.10548436965e-05" iyy="0.010372149855" iyz="-0.000686027737846" izz="0.00045193537393" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/piper_dae/link1.dae" />
+      </geometry>
+      <material name="inline_material_18">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <box size="0.09 0.09 0.12" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="link2">
+    <inertial>
+      <origin rpy="1.5745757897158863 0.07186175995117444 1.5980386425571325" xyz="0.198666 -0.0109269 0.00142122" />
+      <mass value="1.17" />
+      <inertia ixx="0.0679547522931" ixy="-0.000716141023869" ixz="2.70664133345e-06" iyy="0.0776933056006" iyz="-3.75994311719e-05" izz="0.00111980210633" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0.0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/piper_dae/link2.dae" />
+      </geometry>
+      <material name="inline_material_19">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <box size="0.08 0.08 0.25" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="link3">
+    <inertial>
+      <origin rpy="1.5708241611966332 0.027318106718370382 0.12335250163916042" xyz="-0.0202738 -0.133915 -0.000458683" />
+      <mass value="0.5" />
+      <inertia ixx="0.0138301609333" ixy="-0.000273045174508" ixz="7.60004908144e-09" iyy="0.023795739059" iyz="-2.78136346607e-07" izz="0.000244685007742" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/piper_dae/link3.dae" />
+      </geometry>
+      <material name="inline_material_20">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <box size="0.07 0.07 0.22" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="link4">
+    <inertial>
+      <origin rpy="-0.04914764928452852 0.22355782891013243 1.5302226023513488" xyz="-9.66636e-05 0.000876064 -0.00496881" />
+      <mass value="0.38" />
+      <inertia ixx="0.000683096277754" ixy="0.00010620622434" ixz="-0.00215922223551" iyy="0.000208001188652" iyz="-0.000466567743389" izz="0.00963840353359" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/piper_dae/link4.dae" />
+      </geometry>
+      <material name="inline_material_21">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <box size="0.06 0.06 0.18" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="link5">
+    <inertial>
+      <origin rpy="1.5637616276988755 0.003779832577309522 1.4379422680640908e-05" xyz="-4.10554e-05 -0.0566487 -0.00372058" />
+      <mass value="0.383" />
+      <inertia ixx="0.00166183287066" ixy="-3.77970305043e-05" ixz="-2.65895122452e-07" iyy="0.0116426422747" iyz="7.03436651236e-05" izz="0.00018552285468" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/piper_dae/link5.dae" />
+      </geometry>
+      <material name="inline_material_22">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <box size="0.06 0.06 0.12" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="link6">
+    <inertial>
+      <origin rpy="0.00013682482210424093 0.013560344144235414 0.0015797366388927891" xyz="-0.000182345 7.94104e-05 0.0316214" />
+      <mass value="0.456991" />
+      <inertia ixx="0.000939877716626" ixy="-1.85516422787e-08" ixz="-0.000135586817345" iyy="0.000723068187176" iyz="1.36799662189e-06" izz="0.0103935490962" />
+    </inertial>
+    <visual>
+      <origin rpy="-1.57 0 1.57" xyz="0.008 -0.002 0.064" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/piper_dae/gripper_base_100_v3.dae" scale="1 1 1" />
+      </geometry>
+      <material name="inline_material_23">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="-1.57 0 1.57" xyz="0.008 -0.002 0.064" />
+      <geometry>
+        <box size="0.12 0.08 0.08" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="link7">
+    <inertial>
+      <origin rpy="2.608565096423431 -1.3444276605039303 -1.0422515012400122" xyz="0.000651232 -0.049193 0.00972259" />
+      <mass value="0.125" />
+      <inertia ixx="7.74531e-05" ixy="0.0" ixz="0.0" iyy="7.36783e-05" iyz="0.0" izz="5.0886e-06" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/piper_dae/link7.dae" />
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.7 0.7 0.7 1.0" />
+      </material>
+    </visual>
+    <collision name="Link7_finger_pad">
+      <origin xyz="0 0.025 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.015 0.050 0.035" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="link8">
+    <inertial>
+      <origin rpy="2.608565096423431 -1.3444276605039303 -1.0422515012400122" xyz="0.000651232 -0.049193 0.00972259" />
+      <mass value="0.125" />
+      <inertia ixx="7.74531e-05" ixy="0.0" ixz="0.0" iyy="7.36783e-05" iyz="0.0" izz="5.0886e-06" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="file:///home/aimech/Go2Arm_sim2sim/ros2_ws/src/go2_piper_description/legacy/meshes/piper_dae/link8.dae" />
+      </geometry>
+      <material name="inline_material_24">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision name="Link8_finger_pad">
+      <origin xyz="0 -0.025 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.015 0.050 0.035" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint1" type="revolute">
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.123" />
+    <parent link="link0" />
+    <child link="link1" />
+    <axis xyz="0 0 1" />
+    <limit effort="20.0" lower="-2.618" upper="2.168" velocity="3" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="joint2" type="revolute">
+    <origin rpy="1.5707989186860323 -0.10094993651998099 3.1415852699845486" xyz="0.0 0.0 0.0" />
+    <parent link="link1" />
+    <child link="link2" />
+    <axis xyz="0 0 1" />
+    <limit effort="20.0" lower="0.0" upper="3.14" velocity="3" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="joint3" type="revolute">
+    <origin rpy="0.0 0.0 -1.7589995478522895" xyz="0.28503 0.0 0.0" />
+    <parent link="link2" />
+    <child link="link3" />
+    <axis xyz="0 0 1" />
+    <limit effort="15.0" lower="-2.967" upper="0.0" velocity="3" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="joint4" type="revolute">
+    <origin rpy="1.5707997741256383 0.0 0.0" xyz="-0.021984 -0.25075 0.0" />
+    <parent link="link3" />
+    <child link="link4" />
+    <axis xyz="0 0 1" />
+    <limit effort="7.0" lower="-1.745" upper="1.745" velocity="3" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="joint5" type="revolute">
+    <origin rpy="-1.5707997741256383 0.0 0.0" xyz="0.0 0.0 0.0" />
+    <parent link="link4" />
+    <child link="link5" />
+    <axis xyz="0 0 1" />
+    <limit effort="5.0" lower="-1.22" upper="1.22" velocity="3" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="joint6" type="revolute">
+    <origin rpy="1.5707997741256383 0.0 0.0" xyz="8.8259e-05 -0.091 0.0" />
+    <parent link="link5" />
+    <child link="link6" />
+    <axis xyz="0 0 1" />
+    <limit effort="5.0" lower="-2.0944" upper="2.0944" velocity="3" />
+    <dynamics friction="0.01" damping="0.0" />
+  </joint>
+  <joint name="joint7" type="prismatic">
+    <origin rpy="1.5707997741256383 0.0 0.0" xyz="0.0 0.0 0.1358" />
+    <parent link="link6" />
+    <child link="link7" />
+    <axis xyz="0 0 -1" />
+    <limit effort="20.0" lower="0.0" upper="0.05" velocity="1" />
+    <dynamics friction="0.05" damping="20.0" />
+  </joint>
+  <joint name="joint8" type="prismatic">
+    <origin rpy="-1.5707997741256383 0.0 0.0" xyz="0.0 0.0 0.1358" />
+    <parent link="link6" />
+    <child link="link8" />
+    <axis xyz="0 0 1" />
+    <limit effort="20.0" lower="-0.05" upper="0.0" velocity="1" />
+    <dynamics friction="0.05" damping="20.0" />
+  </joint>
+  <joint name="piper_l_mount" type="fixed">
+    <origin xyz="0.0 0.0 0.06" rpy="0 0 0" />
+    <parent link="base" />
+    <child link="link0" />
+    <axis xyz="0 0 0" />
+    <limit effort="0" lower="0" upper="0" velocity="0" />
+  </joint>
+  <joint name="FL_foot_fixed" type="fixed">
+    <origin xyz="0 0 -0.213" rpy="0 0 0" />
+    <parent link="FL_calf" />
+    <child link="FL_foot" />
+  </joint>
+  <joint name="FR_foot_fixed" type="fixed">
+    <origin xyz="0 0 -0.213" rpy="0 0 0" />
+    <parent link="FR_calf" />
+    <child link="FR_foot" />
+  </joint>
+  <joint name="RL_foot_fixed" type="fixed">
+    <origin xyz="0 0 -0.213" rpy="0 0 0" />
+    <parent link="RL_calf" />
+    <child link="RL_foot" />
+  </joint>
+  <joint name="RR_foot_fixed" type="fixed">
+    <origin xyz="0 0 -0.213" rpy="0 0 0" />
+    <parent link="RR_calf" />
+    <child link="RR_foot" />
+  </joint>
+  <link name="end_effector">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.1" />
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="end_effector_fixed" type="fixed">
+    <origin xyz="0 0 0.13" rpy="0 -1.57079632679 0" />
+    <parent link="link6" />
+    <child link="end_effector" />
+  </joint>
+</robot>

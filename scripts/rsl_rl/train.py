@@ -37,6 +37,16 @@ parser.add_argument(
 parser.add_argument("--seed", type=int, default=None, help="Seed used for the environment")
 parser.add_argument("--max_iterations", type=int, default=None, help="RL Policy training iterations.")
 parser.add_argument(
+    "--finetune_policy", type=str, default=None,
+    help="Path to an exported policy.pt (TorchScript) whose actor MLP weights "
+         "initialize the actor before fine-tuning (critic and log-std start fresh).")
+parser.add_argument(
+    "--teacher_checkpoint",
+    type=str,
+    default=None,
+    help="Direct PPO checkpoint used as the privileged teacher for a DistillationRunner.",
+)
+parser.add_argument(
     "--distributed", action="store_true", default=False, help="Run training with multiple GPUs or nodes."
 )
 parser.add_argument("--export_io_descriptors", action="store_true", default=False, help="Export IO descriptors.")
@@ -68,7 +78,7 @@ import platform
 from packaging import version
 
 # check minimum supported rsl-rl version
-RSL_RL_VERSION = "3.0.1"
+RSL_RL_VERSION = "2.3.1"
 installed_version = metadata.version("rsl-rl-lib")
 if version.parse(installed_version) < version.parse(RSL_RL_VERSION):
     if platform.system() == "Windows":
@@ -91,7 +101,12 @@ from datetime import datetime
 
 import gymnasium as gym
 import torch
-from rsl_rl.runners import DistillationRunner, OnPolicyRunner
+
+try:
+    from rsl_rl.runners import DistillationRunner, OnPolicyRunner
+except ImportError:  # compatibility with rsl-rl-lib versions without distillation support
+    from rsl_rl.runners import OnPolicyRunner
+    DistillationRunner = None
 
 from isaaclab.envs import (
     DirectMARLEnv,
@@ -186,7 +201,7 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         env = multi_agent_to_single_agent(env)
 
     # save resume path before creating a new log_dir
-    if agent_cfg.resume or agent_cfg.algorithm.class_name == "Distillation":
+    if (agent_cfg.resume or agent_cfg.algorithm.class_name == "Distillation") and not args_cli.teacher_checkpoint:
         resume_path = get_checkpoint_path(log_root_path, agent_cfg.load_run, agent_cfg.load_checkpoint)
 
     # wrap for video recording
@@ -210,16 +225,51 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     if agent_cfg.class_name == "OnPolicyRunner":
         runner = OnPolicyRunner(env, agent_cfg.to_dict(), log_dir=log_dir, device=agent_cfg.device)
     elif agent_cfg.class_name == "DistillationRunner":
+        if DistillationRunner is None:
+            raise RuntimeError(
+                "Current rsl-rl-lib does not provide DistillationRunner. "
+                "Please set agent_cfg.class_name='OnPolicyRunner' or upgrade rsl-rl-lib."
+            )
         runner = DistillationRunner(env, agent_cfg.to_dict(), log_dir=log_dir, device=agent_cfg.device)
     else:
         raise ValueError(f"Unsupported runner class: {agent_cfg.class_name}")
     # write git state to logs
     runner.add_git_repo_to_log(__file__)
     # load the checkpoint
-    if agent_cfg.resume or agent_cfg.algorithm.class_name == "Distillation":
+    if args_cli.teacher_checkpoint:
+        if agent_cfg.algorithm.class_name != "Distillation":
+            raise ValueError("--teacher_checkpoint is only valid for a DistillationRunner configuration")
+        print(f"[INFO]: Loading privileged teacher checkpoint: {args_cli.teacher_checkpoint}")
+        # A PPO checkpoint stores its actor under ``actor_state_dict``.  The
+        # Distillation algorithm maps that actor into its frozen teacher while
+        # leaving the student randomly initialized.
+        runner.load(
+            args_cli.teacher_checkpoint,
+            load_cfg={"teacher": True, "iteration": False},
+            strict=True,
+            map_location=agent_cfg.device,
+        )
+    elif agent_cfg.resume or agent_cfg.algorithm.class_name == "Distillation":
         print(f"[INFO]: Loading model checkpoint from: {resume_path}")
         # load previously trained model
         runner.load(resume_path)
+    if args_cli.finetune_policy:
+        print(f"[INFO] Initializing actor from exported policy: {args_cli.finetune_policy}")
+        exported = torch.jit.load(args_cli.finetune_policy, map_location="cpu").eval()
+        exported_state = exported.state_dict()
+        actor = runner.alg.actor
+        actor_state = actor.state_dict()
+        mapped = {
+            key: value
+            for key, value in exported_state.items()
+            if key in actor_state and tuple(actor_state[key].shape) == tuple(value.shape)
+        }
+        actor.load_state_dict(mapped, strict=False)
+        print(
+            f"[INFO] Copied {len(mapped)}/{len(exported_state)} weights into the actor "
+            f"(actor has {len(actor_state)} tensors).")
+        if not mapped:
+            raise RuntimeError("finetune_policy: no weights matched the actor state dict")
 
     # dump the configuration into log-directory
     dump_yaml(os.path.join(log_dir, "params", "env.yaml"), env_cfg)

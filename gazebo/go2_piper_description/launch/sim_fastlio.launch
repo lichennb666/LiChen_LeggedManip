@@ -1,0 +1,18 @@
+<launch>
+  <arg name="world" default="$(find unitree_gazebo)/worlds/competition_scene.world"/>
+  <arg name="gui" default="true"/>
+
+  <!-- Start Gazebo with Go2+Piper -->
+  <include file="$(find go2_piper_description)/launch/gazebo.launch">
+    <arg name="world" value="$(arg world)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+  <!-- FAST-LIO odometry -->
+  <node pkg="fast_lio" type="fastlio_mapping" name="laserMapping" output="screen">
+    <param name="config_file" value="$(find go2_piper_description)/config/mid360_go2.yaml"/>
+  </node>
+
+  <!-- RViz (optional) -->
+  <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find go2_piper_description)/launch/nav.rviz"/> -->
+</launch>

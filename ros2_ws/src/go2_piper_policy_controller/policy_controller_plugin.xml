@@ -1,0 +1,8 @@
+<library path="go2_piper_policy_controller">
+  <class
+    name="go2_piper_policy_controller/PolicyPdController"
+    type="go2_piper_policy_controller::PolicyPdController"
+    base_class_type="controller_interface::ControllerInterface">
+    <description>200 Hz effort PD inner loop driven by 50 Hz learned-policy targets.</description>
+  </class>
+</library>

@@ -1,0 +1,47 @@
+<launch>
+  <!-- ====== EGO-Planner (local B-spline trajectory optimization) ====== -->
+  <arg name="map_size_x" default="50.0"/>
+  <arg name="map_size_y" default="50.0"/>
+  <arg name="map_size_z" default="10.0"/>
+  <arg name="odom_topic" default="/Odometry"/>
+  <arg name="flight_type" default="1"/>  <!-- 1=RViz点击, 2=预设航点, 3=PCT路径 -->
+
+  <include file="$(find ego_planner)/launch/advanced_param.xml">
+    <arg name="map_size_x_" value="$(arg map_size_x)"/>
+    <arg name="map_size_y_" value="$(arg map_size_y)"/>
+    <arg name="map_size_z_" value="$(arg map_size_z)"/>
+    <arg name="odometry_topic" value="$(arg odom_topic)"/>
+    <arg name="cloud_topic" value="/cloud_registered"/>
+    <arg name="max_vel" value="0.3"/>
+    <arg name="max_acc" value="2.0"/>
+    <arg name="planning_horizon" value="2.0"/>
+    <arg name="flight_type" value="$(arg flight_type)"/>
+    <arg name="lidar_frame_id" value="map"/>
+    <arg name="camera_pose_topic" value="/pcl_render_node/camera_pose"/>
+    <arg name="depth_topic" value="/pcl_render_node/depth"/>
+    <arg name="cx" value="321.046"/>
+    <arg name="cy" value="243.449"/>
+    <arg name="fx" value="387.229"/>
+    <arg name="fy" value="387.229"/>
+  </include>
+
+  <!-- Trajectory server: B-spline → cmd_vel -->
+  <node pkg="ego_planner" name="traj_server" type="traj_server" output="screen">
+    <remap from="/position_cmd" to="planning/pos_cmd"/>
+    <remap from="/odom_world" to="$(arg odom_topic)"/>
+    <param name="traj_server/time_forward" value="2" type="double"/>
+    <param name="odometry_topic" value="$(arg odom_topic)" type="string"/>
+  </node>
+
+  <!-- Waypoint generator (RViz 2D Nav Goal → waypoints) -->
+  <node pkg="waypoint_generator" name="waypoint_generator" type="waypoint_generator" output="screen">
+    <remap from="~odom" to="$(arg odom_topic)"/>
+    <remap from="~goal" to="/move_base_simple/goal"/>
+    <remap from="~traj_start_trigger" to="/traj_start_trigger"/>
+    <param name="waypoint_type" value="manual-lonely-waypoint"/>
+  </node>
+
+  <!-- RViz for visualization and goal selection -->
+  <node pkg="rviz" type="rviz" name="rviz_nav" output="screen"/>
+
+</launch>

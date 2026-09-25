@@ -1,0 +1,35 @@
+open3d_global_localization:
+  ros__parameters:
+    map_frame: map
+    odom_frame: camera_init
+    base_frame: body
+    odom_topic: /Odometry
+    scan_topic: /cloud_registered
+    initial_pose_topic: /initialpose
+
+    pcd_queue_size: 10
+    minimum_scan_frames: 10
+    localization_interval: 2.5
+
+    voxel_size_coarse: 0.15
+    voxel_size_fine: 0.10
+    initialization_fitness_threshold: 0.50
+    tracking_fitness_threshold: 0.50
+    required_initial_successes: 2
+    initial_icp_scales: [6.0, 4.0, 1.0]
+    icp_iterations: 30
+    icp_method: 1
+    evaluation_distance_multiplier: 4.0
+
+    crop_extent: [60.0, 60.0, 40.0]
+    submap_update_distance: 3.5
+
+    maximum_source_points: 80000
+    maximum_target_points: 400000
+    minimum_source_points: 300
+    minimum_target_points: 1000
+
+    initial_pose: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+    assume_odom_child_is_base: true
+    publish_debug_clouds: true

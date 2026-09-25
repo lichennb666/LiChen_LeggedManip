@@ -1,0 +1,1 @@
+/home/lili/LeggedManip_Lab/gazebo/scripts/full_station.py

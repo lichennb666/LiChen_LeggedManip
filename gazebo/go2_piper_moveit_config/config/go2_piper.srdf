@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="go2_piper">
+  <!-- Groups -->
+  <group name="arm">
+    <chain base_link="base" tip_link="Link6"/>
+  </group>
+  <group name="gripper">
+    <joint name="joint7"/>
+    <joint name="joint8"/>
+  </group>
+
+  <!-- End effector -->
+  <end_effector name="gripper_eef" parent_link="Link6" group="gripper"/>
+
+  <!-- Disable self-collisions between arm links -->
+  <disable_collisions link1="base" link2="piper_l_base" reason="adjacent"/>
+  <disable_collisions link1="piper_l_base" link2="Link1" reason="adjacent"/>
+  <disable_collisions link1="Link1" link2="Link2" reason="adjacent"/>
+  <disable_collisions link1="Link2" link2="Link3" reason="adjacent"/>
+  <disable_collisions link1="Link3" link2="Link4" reason="adjacent"/>
+  <disable_collisions link1="Link4" link2="Link5" reason="adjacent"/>
+  <disable_collisions link1="Link5" link2="Link6" reason="adjacent"/>
+  <disable_collisions link1="Link6" link2="Link7" reason="adjacent"/>
+  <disable_collisions link1="Link6" link2="Link8" reason="adjacent"/>
+
+  <!-- Disable collisions between arm base and leg links -->
+  <disable_collisions link1="piper_l_base" link2="FL_hip" reason="never"/>
+  <disable_collisions link1="piper_l_base" link2="FR_hip" reason="never"/>
+  <disable_collisions link1="piper_l_base" link2="RL_hip" reason="never"/>
+  <disable_collisions link1="piper_l_base" link2="RR_hip" reason="never"/>
+
+  <!-- Disable arm-leg collisions (arm workspace overlaps legs) -->
+  <disable_collisions link1="Link1" link2="FL_thigh" reason="adjacent"/>
+  <disable_collisions link1="Link1" link2="FR_thigh" reason="adjacent"/>
+  <disable_collisions link1="Link2" link2="FL_thigh" reason="never"/>
+  <disable_collisions link1="Link2" link2="FR_thigh" reason="never"/>
+  <disable_collisions link1="Link2" link2="FL_foot" reason="never"/>
+  <disable_collisions link1="Link2" link2="FR_foot" reason="never"/>
+  <disable_collisions link1="Link3" link2="FL_foot" reason="never"/>
+  <disable_collisions link1="Link3" link2="FR_foot" reason="never"/>
+
+  <!-- Passive joints (legs) -->
+  <passive_joint name="FL_hip_joint"/>
+  <passive_joint name="FL_thigh_joint"/>
+  <passive_joint name="FL_calf_joint"/>
+  <passive_joint name="FR_hip_joint"/>
+  <passive_joint name="FR_thigh_joint"/>
+  <passive_joint name="FR_calf_joint"/>
+  <passive_joint name="RL_hip_joint"/>
+  <passive_joint name="RL_thigh_joint"/>
+  <passive_joint name="RL_calf_joint"/>
+  <passive_joint name="RR_hip_joint"/>
+  <passive_joint name="RR_thigh_joint"/>
+  <passive_joint name="RR_calf_joint"/>
+
+  <!-- Virtual joint: floating base (robot walks) -->
+  <virtual_joint name="world_virtual_joint" type="floating" parent_frame="world" child_link="base"/>
+
+  <!-- Default states -->
+  <group_state name="home" group="arm">
+    <joint name="joint1" value="0"/>
+    <joint name="joint2" value="0.3"/>
+    <joint name="joint3" value="-1.5"/>
+    <joint name="joint4" value="0"/>
+    <joint name="joint5" value="-0.5"/>
+    <joint name="joint6" value="0"/>
+  </group_state>
+  <group_state name="vertical" group="arm">
+    <joint name="joint1" value="0"/>
+    <joint name="joint2" value="1.57"/>
+    <joint name="joint3" value="-1.57"/>
+    <joint name="joint4" value="0"/>
+    <joint name="joint5" value="0"/>
+    <joint name="joint6" value="0"/>
+  </group_state>
+  <group_state name="open" group="gripper">
+    <joint name="joint7" value="0.05"/>
+    <joint name="joint8" value="0"/>
+  </group_state>
+  <group_state name="closed" group="gripper">
+    <joint name="joint7" value="0"/>
+    <joint name="joint8" value="-0.05"/>
+  </group_state>
+</robot>

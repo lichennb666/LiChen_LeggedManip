@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>go2_piper_description</name>
+  <version>0.1.0</version>
+  <description>Unitree Go2 + Piper arm combined robot model for Gazebo</description>
+  <maintainer email="lili@robot.com">lili</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <export>
+    <architecture_independent/>
+  </export>
+</package>

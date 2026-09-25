@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package format="2">
+  <name>go2_piper_moveit_config</name>
+  <version>0.1.0</version>
+  <description>MoveIt config for Go2+Piper legged manipulator</description>
+  <maintainer email="lili@robot.com">lili</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>moveit_ros_move_group</exec_depend>
+  <exec_depend>moveit_fake_controller_manager</exec_depend>
+  <exec_depend>moveit_kinematics</exec_depend>
+  <exec_depend>moveit_planners</exec_depend>
+  <exec_depend>moveit_ros_visualization</exec_depend>
+  <exec_depend>moveit_simple_controller_manager</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>go2_piper_description</exec_depend>
+  <export>
+    <architecture_independent/>
+  </export>
+</package>

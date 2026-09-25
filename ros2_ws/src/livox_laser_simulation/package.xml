@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>livox_laser_simulation</name>
+  <version>0.1.0</version>
+  <description>ROS 2 Gazebo Classic simulation plugin for the Livox MID-360 scan pattern.</description>
+
+  <maintainer email="maintainer@example.com">go2 course maintainers</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>ament_index_cpp</depend>
+  <depend>builtin_interfaces</depend>
+  <depend>gazebo_dev</depend>
+  <depend>gazebo_ros</depend>
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

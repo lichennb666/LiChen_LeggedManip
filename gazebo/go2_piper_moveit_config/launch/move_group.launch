@@ -1,0 +1,40 @@
+<launch>
+  <arg name="rviz" default="false"/>
+
+  <!-- Load robot description and planning context -->
+  <include file="$(find go2_piper_moveit_config)/launch/planning_context.launch"/>
+
+  <!-- MoveGroup server -->
+  <node pkg="moveit_ros_move_group" type="move_group" name="move_group" output="screen"
+        respawn="false">
+    <param name="allow_trajectory_execution" value="true"/>
+    <param name="max_safe_path_cost" value="1"/>
+    <param name="jiggle_fraction" value="0.05"/>
+    <param name="moveit_controller_manager" value="fake"/>
+    <rosparam command="load" file="$(find go2_piper_moveit_config)/config/ros_controllers.yaml"/>
+  </node>
+
+  <!-- Joint state publisher (GUI for manual joint control) -->
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+    <param name="rate" value="50"/>
+    <rosparam param="source_list">[/joint_states]</rosparam>
+  </node>
+
+  <!-- Robot state publisher (TF) -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" value="50"/>
+  </node>
+
+  <!-- RViz with MoveIt plugin -->
+  <node pkg="moveit_ros_visualization" type="motion_planning_rviz_plugin_wrapper"
+        name="motion_planning_rviz_plugin_wrapper" output="screen"
+        if="$(eval arg('rviz') == true)">
+    <param name="planning_group" value="arm"/>
+    <param name="jiggle_fraction" value="0.05"/>
+  </node>
+
+  <node pkg="rviz" type="rviz" name="rviz"
+        if="$(eval arg('rviz') == true)"
+        args="-d $(find go2_piper_moveit_config)/rviz/moveit.rviz"/>
+</launch>

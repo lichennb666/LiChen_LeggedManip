@@ -1,0 +1,11128 @@
+<?xml version="1.0" ?>
+<robot name="go2_piper">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="base">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0.021112 0 -0.005366" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="6.921"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.02448" ixy="0.00012166" ixz="0.0014849" iyy="0.098077" iyz="-3.12E-05" izz="0.107"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/base.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <box size="0.3762 0.0935 0.114"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FL_hip">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="-0.0054 0.00194 -0.000105" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.678"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00048" ixy="-3.01E-06" ixz="1.11E-06" iyy="0.000884" iyz="-1.42E-06" izz="0.000596"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/hip.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0.08 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.04" radius="0.046"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FL_thigh">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="-0.00374 -0.0223 -0.0327" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="1.152"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00584" ixy="8.72E-05" ixz="-0.000289" iyy="0.0058" iyz="0.000808" izz="0.00103"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/thigh.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <box size="0.11 0.0245 0.034"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FL_calf">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0.00548 -0.000975 -0.115" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.154"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00108" ixy="3.4E-07" ixz="1.72E-05" iyy="0.0011" iyz="8.28E-06" izz="3.29E-05"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/calf.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 -0.21 0" xyz="0.008 0 -0.06"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.12" radius="0.012"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FL_calflower">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.065" radius="0.011"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FL_calflower1">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.03" radius="0.0155"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FL_foot">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.04"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="9.6e-06" ixy="0" ixz="0" iyy="9.6e-06" iyz="0" izz="9.6e-06"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/foot.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="-0.002 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <sphere radius="0.022"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FR_hip">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="-0.0054 -0.00194 -0.000105" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.678"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00048" ixy="3.01E-06" ixz="1.11E-06" iyy="0.000884" iyz="1.42E-06" izz="0.000596"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="3.1415 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/hip.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="1.5707963267948966 0 0" xyz="0 -0.08 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.04" radius="0.046"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FR_thigh">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="-0.00374 0.0223 -0.0327" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="1.152"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00584" ixy="-8.72E-05" ixz="-0.000289" iyy="0.0058" iyz="-0.000808" izz="0.00103"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/thigh_mirror.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <box size="0.11 0.0245 0.034"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FR_calf">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0.00548 0.000975 -0.115" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.154"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00108" ixy="-3.4E-07" ixz="1.72E-05" iyy="0.0011" iyz="-8.28E-06" izz="3.29E-05"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/calf_mirror.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 -0.2 0" xyz="0.01 0 -0.06"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.12" radius="0.013"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FR_calflower">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.065" radius="0.011"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FR_calflower1">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.03" radius="0.0155"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="FR_foot">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.04"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="9.6e-06" ixy="0" ixz="0" iyy="9.6e-06" iyz="0" izz="9.6e-06"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/foot.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="-0.002 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <sphere radius="0.022"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RL_hip">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0.0054 0.00194 -0.000105" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.678"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00048" ixy="3.01E-06" ixz="-1.11E-06" iyy="0.000884" iyz="-1.42E-06" izz="0.000596"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 3.1415 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/hip.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0.08 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.04" radius="0.046"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RL_thigh">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="-0.00374 -0.0223 -0.0327" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="1.152"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00584" ixy="8.72E-05" ixz="-0.000289" iyy="0.0058" iyz="0.000808" izz="0.00103"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/thigh.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <box size="0.11 0.0245 0.034"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RL_calf">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0.00548 -0.000975 -0.115" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.154"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00108" ixy="3.4E-07" ixz="1.72E-05" iyy="0.0011" iyz="8.28E-06" izz="3.29E-05"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/calf.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 -0.2 0" xyz="0.01 0 -0.06"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.12" radius="0.013"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RL_calflower">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.065" radius="0.011"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RL_calflower1">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.03" radius="0.0155"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RL_foot">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.04"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="9.6e-06" ixy="0" ixz="0" iyy="9.6e-06" iyz="0" izz="9.6e-06"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/foot.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="-0.002 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <sphere radius="0.022"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RR_hip">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0.0054 -0.00194 -0.000105" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.678"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00048" ixy="-3.01E-06" ixz="-1.11E-06" iyy="0.000884" iyz="1.42E-06" izz="0.000596"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="3.1415 3.1415 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/hip.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="1.5707963267948966 0 0" xyz="0 -0.08 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.04" radius="0.046"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RR_thigh">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="-0.00374 0.0223 -0.0327" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="1.152"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00584" ixy="-8.72E-05" ixz="-0.000289" iyy="0.0058" iyz="-0.000808" izz="0.00103"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/thigh_mirror.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <box size="0.11 0.0245 0.034"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RR_calf">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0.00548 0.000975 -0.115" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.154"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.00108" ixy="-3.4E-07" ixz="1.72E-05" iyy="0.0011" iyz="-8.28E-06" izz="3.29E-05"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/calf_mirror.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 -0.2 0" xyz="0.01 0 -0.06"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.12" radius="0.013"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RR_calflower">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.065" radius="0.011"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RR_calflower1">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <cylinder length="0.03" radius="0.0155"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="RR_foot">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.04"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="9.6e-06" ixy="0" ixz="0" iyy="9.6e-06" iyz="0" izz="9.6e-06"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/go2_dae/foot.dae"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="-0.002 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <sphere radius="0.022"/>
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="imu">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="radar">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="FL_hip_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0.1934 0.0465 0" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="base"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="FL_hip"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="1 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-1.0472" upper="1.0472" effort="23.7" velocity="30.1"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="FL_thigh_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0 0.0955 0" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="FL_hip"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="FL_thigh"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="0 1 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-1.5708" upper="3.4907" effort="23.7" velocity="30.1"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="FL_calf_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0 0 -0.213" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="FL_thigh"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="FL_calf"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="0 1 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-2.7227" upper="-0.83776" effort="35.55" velocity="20.07"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="FR_hip_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0.1934 -0.0465 0" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="base"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="FR_hip"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="1 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-1.0472" upper="1.0472" effort="23.7" velocity="30.1"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="FR_thigh_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0 -0.0955 0" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="FR_hip"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="FR_thigh"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="0 1 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-1.5708" upper="3.4907" effort="23.7" velocity="30.1"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="FR_calf_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0 0 -0.213" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="FR_thigh"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="FR_calf"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="0 1 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-2.7227" upper="-0.83776" effort="35.55" velocity="20.07"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="RL_hip_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="-0.1934 0.0465 0" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="base"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="RL_hip"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="1 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-1.0472" upper="1.0472" effort="23.7" velocity="30.1"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="RL_thigh_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0 0.0955 0" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="RL_hip"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="RL_thigh"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="0 1 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-0.5236" upper="4.5379" effort="23.7" velocity="30.1"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="RL_calf_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0 0 -0.213" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="RL_thigh"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="RL_calf"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="0 1 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-2.7227" upper="-0.83776" effort="35.55" velocity="20.07"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="RR_hip_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="-0.1934 -0.0465 0" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="base"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="RR_hip"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="1 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-1.0472" upper="1.0472" effort="23.7" velocity="30.1"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="RR_thigh_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0 -0.0955 0" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="RR_hip"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="RR_thigh"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="0 1 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-0.5236" upper="4.5379" effort="23.7" velocity="30.1"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="RR_calf_joint" type="revolute">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0 0 -0.213" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="RR_thigh"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="RR_calf"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="0 1 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <limit lower="-2.7227" upper="-0.83776" effort="35.55" velocity="20.07"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="imu_joint" type="fixed">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="-0.02557 0 0.04232" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="base"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="imu"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="0 0 0"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="radar_joint" type="fixed">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0.28945 0 -0.046825" rpy="0 2.8782 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="base"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="radar"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <axis xyz="0 0 0"/>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <link name="laser_livox">
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.1"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      
+      
+      
+      
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        <mesh filename="package://go2_piper_description/meshes/livox_mid360.dae"/>
+        
+        
+        
+        
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+      
+      
+      
+      
+      <material>
+        
+        
+        
+        
+        
+        
+        
+        
+        <color rgba="0.3 0.3 0.3 1"/>
+        
+        
+        
+        
+      
+      
+      
+      
+      </material>
+      
+      
+      
+      
+    
+    
+    
+    
+    </visual>
+    
+    
+    
+    
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        
+        
+        
+        
+        <box size="0.08 0.08 0.06"/>
+        
+        
+        
+        
+      
+      
+      
+      
+      </geometry>
+      
+      
+      
+      
+    
+    
+    
+    
+    </collision>
+    
+    
+    
+    
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="laser_livox_joint" type="fixed">
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="0.32 -0.06 0.06" rpy="0 0.785 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="base"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="laser_livox"/>
+    
+    
+    
+    
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="livox_imu_link">
+    
+    
+    
+    
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      
+      
+      
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      <mass value="0.001"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+      
+      
+      
+      
+    
+    
+    
+    
+    </inertial>
+    
+    
+    
+    
+  
+  
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  
+  
+  
+  <joint name="livox_imu_joint" type="fixed">
+    
+    
+    
+    
+    
+    
+    
+    
+    <origin xyz="-0.012 0 0.047" rpy="0 0 0"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    <parent link="laser_livox"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    <child link="livox_imu_link"/>
+    
+    
+    
+    
+  
+  
+  
+  
+  </joint>
+  
+  
+  
+  
+  
+  
+  
+  
+  <gazebo reference="laser_livox">
+    
+    
+    
+    
+    
+    
+    
+    
+    <sensor type="ray" name="laser_livox">
+      
+      
+      
+      
+      
+      
+      
+      
+      <pose text="0 0 0 0 0 0"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      <visualize text="false"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      <update_rate text="20"/>
+      
+      
+      
+      
+      
+      
+      
+      
+      <plugin name="gazebo_ros_lidar" filename="liblivox_laser_simulation.so">
+        
+        
+        
+        
+        
+        
+        
+        
+        <ray>
+          
+          
+          
+          
+          
+          
+          
+          
+          <scan>
+            
+            
+            
+            
+            
+            
+            
+            
+            <horizontal>
+              
+              
+              
+              
+              
+              
+              
+              
+              <samples text="100"/>
+              
+              
+              
+              
+              
+              
+              
+              
+              <resolution text="1"/>
+              
+              
+              
+              
+              
+              
+              
+              
+              <min_angle text="0"/>
+              
+              
+              
+              
+              
+              
+              
+              
+              <max_angle text="6.28318"/>
+              
+              
+              
+              
+            
+            
+            
+            
+            </horizontal>
+            
+            
+            
+            
+            
+            
+            
+            
+            <vertical>
+              
+              
+              
+              
+              
+              
+              
+              
+              <samples text="360"/>
+              
+              
+              
+              
+              
+              
+              
+              
+              <resolution text="1"/>
+              
+              
+              
+              
+              
+              
+              
+              
+              <min_angle text="-0.0562"/>
+              
+              
+              
+              
+              
+              
+              
+              
+              <max_angle text="0.9813"/>
+              
+              
+              
+              
+            
+            
+            
+            
+            </vertical>
+            
+            
+            
+            
+          
+          
+          
+          
+          </scan>
+          
+          
+          
+          
+          
+          
+          
+          
+          <range>
+            
+            
+            
+            
+            
+            
+            
+            
+            <min text="0.1"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            <max text="30"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            <resolution text="0.02"/>
+            
+            
+            
+            
+          
+          
+          
+          
+          </range>
+          
+          
+          
+          
+          
+          
+          
+          
+          <noise>
+            
+            
+            
+            
+            
+            
+            
+            
+            <type text="gaussian"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            <mean text="0.0"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            <stddev text="0.0"/>
+            
+            
+            
+            
+          
+          
+          
+          
+          </noise>
+          
+          
+          
+          
+        
+        
+        
+        
+        </ray>
+        
+        
+        
+        
+        
+        
+        
+        
+        <visualize text="false"/>
+        
+        
+        
+        
+        
+        
+        
+        
+        <samples text="24000"/>
+        
+        
+        
+        
+        
+        
+        
+        
+        <downsample text="1"/>
+        
+        
+        
+        
+        
+        
+        
+        
+        <csv_file_name text="package://go2_piper_description/config/mid360.csv"/>
+        
+        
+        
+        
+        
+        
+        
+        
+        <ros_topic text="scan"/>
+        
+        
+        
+        
+      
+      
+      
+      
+      </plugin>
+      
+      
+      
+      
+    
+    
+    
+    
+    </sensor>
+    
+    
+    
+    
+  
+  
+  
+  
+  </gazebo>
+  
+  
+  
+  
+
+  
+  
+  
+  <gazebo>
+    
+    
+    
+    
+    
+    
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      
+      
+      
+      
+      
+      
+      <robotNamespace text="/go2_piper_gazebo"/>
+      
+      
+      
+      
+      
+      
+      <robotSimType text="gazebo_ros_control/DefaultRobotHWSim"/>
+      
+      
+      
+    
+    
+    
+    </plugin>
+    
+    
+    
+  
+  
+  
+  </gazebo>
+  
+  
+  
+  
+  
+  
+  <transmission name="FL_hip_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="FL_hip_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="FL_hip_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <transmission name="FL_thigh_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="FL_thigh_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="FL_thigh_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <transmission name="FL_calf_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="FL_calf_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="FL_calf_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <transmission name="FR_hip_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="FR_hip_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="FR_hip_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <transmission name="FR_thigh_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="FR_thigh_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="FR_thigh_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <transmission name="FR_calf_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="FR_calf_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="FR_calf_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <transmission name="RL_hip_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="RL_hip_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="RL_hip_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <transmission name="RL_thigh_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="RL_thigh_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="RL_thigh_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <transmission name="RL_calf_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="RL_calf_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="RL_calf_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <transmission name="RR_hip_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="RR_hip_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="RR_hip_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <transmission name="RR_thigh_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="RR_thigh_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="RR_thigh_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <transmission name="RR_calf_tran">
+    
+    
+    
+    
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    
+    
+    
+    
+    <joint name="RR_calf_joint">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+    
+    
+    
+    </joint>
+    
+    
+    
+    
+    
+    
+    <actuator name="RR_calf_motor">
+      
+      
+      
+      
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      
+      
+      
+      
+      <mechanicalReduction text="1"/>
+      
+      
+      
+    
+    
+    
+    </actuator>
+    
+    
+    
+  
+  
+  
+  </transmission>
+  
+  
+  
+  
+  
+  
+  <gazebo reference="imu">
+    
+    
+    
+    
+    
+    
+    <sensor name="imu_sensor" type="imu">
+      
+      
+      
+      
+      
+      
+      <always_on text="true"/>
+      
+      
+      
+      
+      
+      
+      <update_rate text="1000"/>
+      
+      
+      
+      
+      
+      
+      <topic text="__default_topic__"/>
+      
+      
+      
+      
+      
+      
+      <plugin name="imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+        
+        
+        
+        
+        
+        
+        <topicName text="trunk_imu">/trunk_imu</topicName>
+        
+        
+        
+        
+        
+        
+        <bodyName text="base"/>
+        
+        
+        
+        
+        
+        
+        <updateRateHZ text="1000.0"/>
+        
+        
+        
+        
+        
+        
+        <gaussianNoise text="0.001"/>
+        
+        
+        
+        
+        
+        
+        <frameName text="imu"/>
+        
+        
+        
+      
+      
+      
+      </plugin>
+      
+      
+      
+    
+    
+    
+    </sensor>
+    
+    
+    
+  
+  
+  
+  </gazebo>
+  
+  
+  
+  
+  
+  
+  <gazebo reference="FL_calf">
+    
+    
+    
+    
+    
+    
+    <sensor name="FL_foot_contact" type="contact">
+      
+      
+      
+      
+      
+      
+      <update_rate text="100"/>
+      
+      
+      
+      
+      
+      
+      <plugin name="contactPlugin" filename="libgazebo_ros_contact.so"/>
+      
+      
+      
+      
+      
+      
+      <contact>
+        
+        
+        
+        
+        
+        
+        <collision text="FL_foot_collision"/>
+        
+        
+        
+      
+      
+      
+      </contact>
+      
+      
+      
+    
+    
+    
+    </sensor>
+    
+    
+    
+  
+  
+  
+  </gazebo>
+  
+  
+  
+  
+  
+  
+  <gazebo reference="FR_calf">
+    
+    
+    
+    
+    
+    
+    <sensor name="FR_foot_contact" type="contact">
+      
+      
+      
+      
+      
+      
+      <update_rate text="100"/>
+      
+      
+      
+      
+      
+      
+      <plugin name="contactPlugin" filename="libgazebo_ros_contact.so"/>
+      
+      
+      
+      
+      
+      
+      <contact>
+        
+        
+        
+        
+        
+        
+        <collision text="FR_foot_collision"/>
+        
+        
+        
+      
+      
+      
+      </contact>
+      
+      
+      
+    
+    
+    
+    </sensor>
+    
+    
+    
+  
+  
+  
+  </gazebo>
+  
+  
+  
+  
+  
+  
+  <gazebo reference="RL_calf">
+    
+    
+    
+    
+    
+    
+    <sensor name="RL_foot_contact" type="contact">
+      
+      
+      
+      
+      
+      
+      <update_rate text="100"/>
+      
+      
+      
+      
+      
+      
+      <plugin name="contactPlugin" filename="libgazebo_ros_contact.so"/>
+      
+      
+      
+      
+      
+      
+      <contact>
+        
+        
+        
+        
+        
+        
+        <collision text="RL_foot_collision"/>
+        
+        
+        
+      
+      
+      
+      </contact>
+      
+      
+      
+    
+    
+    
+    </sensor>
+    
+    
+    
+  
+  
+  
+  </gazebo>
+  
+  
+  
+  
+  
+  
+  <gazebo reference="RR_calf">
+    
+    
+    
+    
+    
+    
+    <sensor name="RR_foot_contact" type="contact">
+      
+      
+      
+      
+      
+      
+      <update_rate text="100"/>
+      
+      
+      
+      
+      
+      
+      <plugin name="contactPlugin" filename="libgazebo_ros_contact.so"/>
+      
+      
+      
+      
+      
+      
+      <contact>
+        
+        
+        
+        
+        
+        
+        <collision text="RR_foot_collision"/>
+        
+        
+        
+      
+      
+      
+      </contact>
+      
+      
+      
+    
+    
+    
+    </sensor>
+    
+    
+    
+  
+  
+  
+  </gazebo>
+  
+  
+  
+  
+  
+  
+  <gazebo>
+    
+    
+    
+    
+    
+    
+    <plugin name="p3d_base_truth" filename="libgazebo_ros_p3d.so">
+      
+      
+      
+      
+      
+      
+      <alwaysOn text="true"/>
+      
+      
+      
+      
+      
+      
+      <update_rate text="100"/>
+      
+      
+      
+      
+      
+      
+      <bodyName text="base"/>
+      
+      
+      
+      
+      
+      
+      <topicName text="ground_truth/base"/>
+      
+      
+      
+      
+      
+      
+      <frameName text="world"/>
+      
+      
+      
+    
+    
+    
+    </plugin>
+    
+    
+    
+  
+  
+  
+  </gazebo>
+  
+  
+  
+
+  
+  
+  <gazebo reference="livox_imu_link">
+    
+    
+    
+    
+    <gravity text="true"/>
+    
+    
+    
+    
+    <sensor name="livox_imu_sensor" type="imu">
+      
+      
+      
+      
+      <always_on text="true"/>
+      
+      
+      
+      
+      <update_rate text="1000"/>
+      
+      
+      
+      
+      <topic text="__default_topic__"/>
+      
+      
+      
+      
+      <plugin name="livox_imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+        
+        
+        
+        
+        <topicName text="/livox/imu"/>
+        
+        
+        
+        
+        <bodyName text="livox_imu_link"/>
+        
+        
+        
+        
+        <updateRateHZ text="1000.0"/>
+        
+        
+        
+        
+        <gaussianNoise text="0.001"/>
+        
+        
+        
+        
+        <frameName text="livox_imu_link"/>
+        
+        
+      
+      
+      </plugin>
+      
+      
+      
+      
+      <pose text="0 0 0 0 0 0"/>
+      
+      
+    
+    
+    </sensor>
+    
+    
+  
+  
+  </gazebo>
+  
+  
+
+  
+  <link name="d435_camera_link"/>
+  
+  
+  
+  
+  
+  <link name="camera_bottom_screw_frame"/>
+  
+  
+  
+  
+  <link name="camera_link">
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      
+      <origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0.0043 -0.0175 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="file:///home/lili/3d-navi/src/realsense2_description/meshes/d435.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </visual>
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 -0.0175 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <box size="0.02505 0.09 0.025"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </collision>
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      
+      <mass value="0.072"/>
+      
+      
+      
+      
+      <origin xyz="0 0 0"/>
+      
+      
+      
+      
+      <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.000498940" iyz="0.0" izz="0.003879257"/>
+      
+      
+    
+    
+    </inertial>
+    
+    
+  
+  
+  </link>
+  
+  
+  
+  
+  
+  <link name="piper_l_base">
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="-0.00347 -0.00012 0.04283"/>
+      
+      
+      
+      
+      <mass value="1.07"/>
+      
+      
+      
+      
+      <inertia ixx="0.00099887" ixy="0.00000194" ixz="0.00000613" iyy="0.00112771" iyz="0.00000201" izz="0.00096552"/>
+      
+      
+    
+    
+    </inertial>
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/base_link.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+      
+      
+      </material>
+      
+      
+    
+    
+    </visual>
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/base_link.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </collision>
+    
+    
+  
+  
+  </link>
+  
+  
+  
+  
+  <link name="Link1">
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0.00201 -0.00220 -0.02127"/>
+      
+      
+      
+      
+      <mass value="0.11"/>
+      
+      
+      
+      
+      <inertia ixx="0.00011279" ixy="0.00000011" ixz="0.00000186" iyy="0.00007274" iyz="0.00000781" izz="0.00011091"/>
+      
+      
+    
+    
+    </inertial>
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link1.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+      
+      
+      </material>
+      
+      
+    
+    
+    </visual>
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link1.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </collision>
+    
+    
+  
+  
+  </link>
+  
+  
+  
+  
+  <link name="Link2">
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0.25986 -0.00913 0.00237"/>
+      
+      
+      
+      
+      <mass value="1.16"/>
+      
+      
+      
+      
+      <inertia ixx="0.00096865" ixy="0.00041154" ixz="0.00005836" iyy="0.01629404" iyz="0.00001694" izz="0.01628996"/>
+      
+      
+    
+    
+    </inertial>
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      <origin rpy="0 0.0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link2.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+      
+      
+      </material>
+      
+      
+    
+    
+    </visual>
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link2.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </collision>
+    
+    
+  
+  
+  </link>
+  
+  
+  
+  
+  <link name="Link3">
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="-0.00726 -0.19029 -0.00045"/>
+      
+      
+      
+      
+      <mass value="0.59"/>
+      
+      
+      
+      
+      <inertia ixx="0.00558278" ixy="0.00018354" ixz="0.00000254" iyy="0.00026568" iyz="0.00005267" izz="0.00554212"/>
+      
+      
+    
+    
+    </inertial>
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link3.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+      
+      
+      </material>
+      
+      
+    
+    
+    </visual>
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link3.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </collision>
+    
+    
+  
+  
+  </link>
+  
+  
+  
+  
+  <link name="Link4">
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0.00054 -0.00162 -0.00399"/>
+      
+      
+      
+      
+      <mass value="0.37"/>
+      
+      
+      
+      
+      <inertia ixx="0.00017066" ixy="0.00000129" ixz="0.00000316" iyy="0.00017128" iyz="0.00000775" izz="0.00014437"/>
+      
+      
+    
+    
+    </inertial>
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link4.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+      
+      
+      </material>
+      
+      
+    
+    
+    </visual>
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link4.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </collision>
+    
+    
+  
+  
+  </link>
+  
+  
+  
+  
+  <link name="Link5">
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0.0002 -0.06142 -0.00257"/>
+      
+      
+      
+      
+      <mass value="0.38"/>
+      
+      
+      
+      
+      <inertia ixx="0.00029534" ixy="0.00000167" ixz="0.00000016" iyy="0.00016988" iyz="0.00005020" izz="0.00028334"/>
+      
+      
+    
+    
+    </inertial>
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link5.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+      
+      
+      </material>
+      
+      
+    
+    
+    </visual>
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link5.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </collision>
+    
+    
+  
+  
+  </link>
+  
+  
+  
+  
+  <link name="Link6">
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="-3.49720252756924E-15 -3.47851379593264E-06 -0.00315807577104896"/>
+      
+      
+      
+      
+      <mass value="0.00563228459599247"/>
+      
+      
+      
+      
+      <inertia ixx="5.13060019382932E-07" ixy="-1.55709158367416E-20" ixz="1.27617424904681E-19" iyy="5.13060019383189E-07" iyz="6.20132760426175E-20" izz="9.81761489300716E-07"/>
+      
+      
+    
+    
+    </inertial>
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      <origin rpy="-1.57 0 1.57" xyz="0.008 -0.002 0.064"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/gripper_base_100_v3.dae" scale="1 1 1"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        <color rgba="1 1 1 1"/>
+        
+        
+      
+      
+      </material>
+      
+      
+    
+    
+    </visual>
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      <origin rpy="-1.57 0 1.57" xyz="0.008 -0.002 0.064"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/gripper_base_100_v3.dae" scale="1 1 1"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </collision>
+    
+    
+  
+  
+  </link>
+  
+  
+  
+  
+  <link name="Link7">
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0.000277816920932317 -0.0467673824063769 -0.00921030054508036"/>
+      
+      
+      
+      
+      <mass value="0.0264822021416248"/>
+      
+      
+      
+      
+      <inertia ixx="9.99779119357223E-06" ixy="-1.57542283433504E-07" ixz="2.71367446701359E-08" iyy="6.17952441557932E-06" iyz="1.58939319453383E-06" izz="1.4210192754512E-05"/>
+      
+      
+    
+    
+    </inertial>
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link7.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+      
+      
+      <material name="LightGrey">
+        
+        
+        
+        
+        <color rgba="0.7 0.7 0.7 1.0"/>
+        
+        
+      
+      
+      </material>
+      
+      
+    
+    
+    </visual>
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link7.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </collision>
+    
+    
+  
+  
+  </link>
+  
+  
+  
+  
+  <link name="Link8">
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0.000277816920932317 0.0467673824063769 -0.00921030054508036"/>
+      
+      
+      
+      
+      <mass value="0.0264822021416248"/>
+      
+      
+      
+      
+      <inertia ixx="9.99779119357223E-06" ixy="-1.57542283433504E-07" ixz="2.71367446701359E-08" iyy="6.17952441557932E-06" iyz="1.58939319453383E-06" izz="1.4210192754512E-05"/>
+      
+      
+    
+    
+    </inertial>
+    
+    
+    
+    
+    <visual>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link8.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+      
+      
+      <material name="">
+        
+        
+        
+        
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+        
+        
+      
+      
+      </material>
+      
+      
+    
+    
+    </visual>
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/link8.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </collision>
+    
+    
+  
+  
+  </link>
+  
+  
+  
+  
+  <link name="camera_stand_link">
+    
+    
+    
+    
+    <inertial>
+      
+      
+      
+      
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      
+      
+      
+      
+      <mass value="0.0"/>
+      
+      
+      
+      
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+      
+      
+    
+    
+    </inertial>
+    
+    
+    
+    
+    <visual name="">
+      
+      
+      
+      
+      <origin rpy="0.0 3.14 1.57" xyz="0.0 0.0 0.0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/realsense_mid_stand_v2.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </visual>
+    
+    
+    
+    
+    <collision>
+      
+      
+      
+      
+      <origin rpy="0.0 3.14 1.57" xyz="0.0 0.0 0.0"/>
+      
+      
+      
+      
+      <geometry>
+        
+        
+        
+        
+        <mesh filename="package://piper_l_description/meshes/dae/realsense_mid_stand_v2.dae"/>
+        
+        
+      
+      
+      </geometry>
+      
+      
+    
+    
+    </collision>
+    
+    
+  
+  
+  </link>
+  
+  
+  
+  
+  <joint name="camera_joint" type="fixed">
+    
+    
+    
+    
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    
+    
+    
+    
+    <parent link="d435_camera_link"/>
+    
+    
+    
+    
+    <child link="camera_bottom_screw_frame"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+  
+  
+  <joint name="camera_link_joint" type="fixed">
+    
+    
+    
+    
+    <origin rpy="0 0 0" xyz="0.010600000000000002 0.0175 0.0125"/>
+    
+    
+    
+    
+    <parent link="camera_bottom_screw_frame"/>
+    
+    
+    
+    
+    <child link="camera_link"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+  
+  
+  <joint name="joint1" type="revolute">
+    
+    
+    
+    
+    <origin rpy="0 0 0" xyz="0 0 0.123"/>
+    
+    
+    
+    
+    <parent link="piper_l_base"/>
+    
+    
+    
+    
+    <child link="Link1"/>
+    
+    
+    
+    
+    <axis xyz="0 0 1"/>
+    
+    
+    
+    
+    <limit effort="100" lower="-2.618" upper="2.618" velocity="3"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+  
+  
+  <joint name="joint2" type="revolute">
+    
+    
+    
+    
+    <origin rpy="1.5708 -0.1745 3.1416" xyz="0 0 0"/>
+    
+    
+    
+    
+    <parent link="Link1"/>
+    
+    
+    
+    
+    <child link="Link2"/>
+    
+    
+    
+    
+    <axis xyz="0 0 1"/>
+    
+    
+    
+    
+    <limit effort="100" lower="0" upper="3.14" velocity="3"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+  
+  
+  <joint name="joint3" type="revolute">
+    
+    
+    
+    
+    <origin rpy="0 0 -1.8325" xyz="0.33823 0 0"/>
+    
+    
+    
+    
+    <parent link="Link2"/>
+    
+    
+    
+    
+    <child link="Link3"/>
+    
+    
+    
+    
+    <axis xyz="0 0 1"/>
+    
+    
+    
+    
+    <limit effort="100" lower="-2.697" upper="0" velocity="3"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+  
+  
+  <joint name="joint4" type="revolute">
+    
+    
+    
+    
+    <origin rpy="1.5708 0 0.0" xyz="0 -0.3215 0"/>
+    
+    
+    
+    
+    <parent link="Link3"/>
+    
+    
+    
+    
+    <child link="Link4"/>
+    
+    
+    
+    
+    <axis xyz="0 0 1"/>
+    
+    
+    
+    
+    <limit effort="100" lower="-1.832" upper="1.832" velocity="3"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+  
+  
+  <joint name="joint5" type="revolute">
+    
+    
+    
+    
+    <origin rpy="-1.5708 0.0 0" xyz="0 0 0"/>
+    
+    
+    
+    
+    <parent link="Link4"/>
+    
+    
+    
+    
+    <child link="Link5"/>
+    
+    
+    
+    
+    <axis xyz="0 0 -1"/>
+    
+    
+    
+    
+    <limit effort="100" lower="-1.22" upper="1.22" velocity="3"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+  
+  
+  <joint name="joint6" type="revolute">
+    
+    
+    
+    
+    <origin rpy="1.5708 0 0" xyz="0 -0.091 0"/>
+    
+    
+    
+    
+    <parent link="Link5"/>
+    
+    
+    
+    
+    <child link="Link6"/>
+    
+    
+    
+    
+    <axis xyz="0 0 1"/>
+    
+    
+    
+    
+    <limit effort="100" lower="-3.14" upper="3.14" velocity="3"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+  
+  
+  <joint name="joint7" type="prismatic">
+    
+    
+    
+    
+    <origin rpy="1.5708 0 0" xyz="0 0 0.13503"/>
+    
+    
+    
+    
+    <parent link="Link6"/>
+    
+    
+    
+    
+    <child link="Link7"/>
+    
+    
+    
+    
+    <axis xyz="0 0 -1"/>
+    
+    
+    
+    
+    <limit effort="100" lower="0" upper="0.05" velocity="1"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+  
+  
+  <joint name="joint8" type="prismatic">
+    
+    
+    
+    
+    <origin rpy="-1.5708 0 0" xyz="0 0 0.13503"/>
+    
+    
+    
+    
+    <parent link="Link6"/>
+    
+    
+    
+    
+    <child link="Link8"/>
+    
+    
+    
+    
+    <axis xyz="0 0 1"/>
+    
+    
+    
+    
+    <limit effort="100" lower="-0.05" upper="0" velocity="1"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+  
+  
+  <joint name="camera_stand_joint" type="fixed">
+    
+    
+    
+    
+    <origin rpy="0 0 0" xyz="-0.034 -0.002 0.023"/>
+    
+    
+    
+    
+    <parent link="Link6"/>
+    
+    
+    
+    
+    <child link="camera_stand_link"/>
+    
+    
+    
+    
+    <axis xyz="0.0 0.0 0.0"/>
+    
+    
+    
+    
+    <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+  
+  
+  <joint name="d435_camera_joint" type="fixed">
+    
+    
+    
+    
+    <origin rpy="0.0 -1.22 0" xyz="-0.032 -0.028 0.0"/>
+    
+    
+    
+    
+    <parent link="camera_stand_link"/>
+    
+    
+    
+    
+    <child link="d435_camera_link"/>
+    
+    
+    
+    
+    <axis xyz="0.0 0.0 0.0"/>
+    
+    
+    
+    
+    <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
+    
+    
+  
+  
+  </joint>
+  
+  
+
+  
+  <joint name="piper_l_mount" type="fixed">
+    
+    
+    <origin xyz="0.0 0.0 0.06" rpy="0 0 0"/>
+    
+    
+    <parent link="base"/>
+    
+    
+    <child link="piper_l_base"/>
+    
+    
+    <axis xyz="0 0 0"/>
+    
+    
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+    
+  
+  </joint>
+  
+  
+  <transmission name="joint1_tran">
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    <joint name="joint1">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+    
+    </joint>
+    
+    
+    <actuator name="joint1_motor">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      <mechanicalReduction text="1"/>
+      
+    
+    </actuator>
+    
+  
+  </transmission>
+  
+  
+  <transmission name="joint2_tran">
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    <joint name="joint2">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+    
+    </joint>
+    
+    
+    <actuator name="joint2_motor">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      <mechanicalReduction text="1"/>
+      
+    
+    </actuator>
+    
+  
+  </transmission>
+  
+  
+  <transmission name="joint3_tran">
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    <joint name="joint3">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+    
+    </joint>
+    
+    
+    <actuator name="joint3_motor">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      <mechanicalReduction text="1"/>
+      
+    
+    </actuator>
+    
+  
+  </transmission>
+  
+  
+  <transmission name="joint4_tran">
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    <joint name="joint4">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+    
+    </joint>
+    
+    
+    <actuator name="joint4_motor">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      <mechanicalReduction text="1"/>
+      
+    
+    </actuator>
+    
+  
+  </transmission>
+  
+  
+  <transmission name="joint5_tran">
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    <joint name="joint5">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+    
+    </joint>
+    
+    
+    <actuator name="joint5_motor">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      <mechanicalReduction text="1"/>
+      
+    
+    </actuator>
+    
+  
+  </transmission>
+  
+  
+  <transmission name="joint6_tran">
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    <joint name="joint6">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+    
+    </joint>
+    
+    
+    <actuator name="joint6_motor">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      <mechanicalReduction text="1"/>
+      
+    
+    </actuator>
+    
+  
+  </transmission>
+  
+  
+  <transmission name="joint7_grip_tran">
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    <joint name="joint7">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+    
+    </joint>
+    
+    
+    <actuator name="joint7_grip_motor">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      <mechanicalReduction text="1"/>
+      
+    
+    </actuator>
+    
+  
+  </transmission>
+  
+  
+  <transmission name="joint8_grip_tran">
+    
+    
+    <type text="transmission_interface/SimpleTransmission"/>
+    
+    
+    <joint name="joint8">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+    
+    </joint>
+    
+    
+    <actuator name="joint8_grip_motor">
+      
+      
+      <hardwareInterface text="hardware_interface/EffortJointInterface"/>
+      
+      
+      <mechanicalReduction text="1"/>
+      
+    
+    </actuator>
+    
+  
+  </transmission>
+  
+
+  <gazebo reference="d435_camera_link">
+    <sensor name="d435_rgb" type="camera">
+      <always_on text="true"/>
+      <update_rate text="30.0"/>
+      <plugin name="d435_rgb_plugin" filename="libgazebo_ros_camera.so">
+        <alwaysOn text="true"/>
+        <updateRate text="30.0"/>
+        <cameraName text="d435_rgb"/>
+        <imageTopicName text="color/image_raw"/>
+        <cameraInfoTopicName text="color/camera_info"/>
+        <frameName text="d435_camera_link"/>
+        <hackBaseline text="0.05"/>
+        <distortionK1 text="0.0"/>
+        <distortionK2 text="0.0"/>
+        <distortionK3 text="0.0"/>
+        <distortionT1 text="0.0"/>
+        <distortionT2 text="0.0"/>
+        <CxPrime text="320"/>
+        <Cx text="320"/>
+        <Cy text="240"/>
+        <focalLength text="381.362"/>
+        <imageFormat text="R8G8B8"/>
+        <width text="640"/>
+        <height text="480"/>
+        <nearClip text="0.1"/>
+        <farClip text="10.0"/>
+      </plugin>
+      <pose text="0 0 0 0 0.785 0"/>
+    </sensor>
+  </gazebo>
+  <gazebo reference="d435_camera_link">
+    <sensor name="d435_depth" type="depth">
+      <always_on text="true"/>
+      <update_rate text="30.0"/>
+      <plugin name="d435_depth_plugin" filename="libgazebo_ros_camera.so">
+        <alwaysOn text="true"/>
+        <updateRate text="30.0"/>
+        <cameraName text="d435_depth"/>
+        <imageTopicName text="depth/image_raw"/>
+        <cameraInfoTopicName text="depth/camera_info"/>
+        <frameName text="d435_camera_link"/>
+        <hackBaseline text="0.05"/>
+        <distortionK1 text="0.0"/>
+        <distortionK2 text="0.0"/>
+        <distortionK3 text="0.0"/>
+        <distortionT1 text="0.0"/>
+        <distortionT2 text="0.0"/>
+        <CxPrime text="320"/>
+        <Cx text="320"/>
+        <Cy text="240"/>
+        <focalLength text="381.362"/>
+        <imageFormat text="R8G8B8"/>
+        <width text="640"/>
+        <height text="480"/>
+        <nearClip text="0.1"/>
+        <farClip text="10.0"/>
+      </plugin>
+      <pose text="0 0 0 0 0.785 0"/>
+    </sensor>
+  </gazebo>
+</robot>

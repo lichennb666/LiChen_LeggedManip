@@ -1,0 +1,76 @@
+<launch>
+  <!-- ====== OctoMap 全局规划 (可选, 需要先导入PCD地图) ====== -->
+  <arg name="enable_octomap" default="false"/>
+
+  <node if="$(arg enable_octomap)" pkg="jie_octomap" type="pcd_to_octomap_node"
+        name="pcd_to_octomap" output="screen">
+    <param name="octomap_topic" value="/octomap"/>
+    <param name="frame_id" value="map"/>
+    <param name="resolution" value="0.1"/>
+    <param name="voxel_downsample_m" value="0.1"/>
+  </node>
+
+  <node if="$(arg enable_octomap)" pkg="octo_planner" type="jie_path_node"
+        name="jie_path_node" output="screen">
+    <param name="octomap_topic" value="/octomap"/>
+    <param name="start_topic" value="/start_point"/>
+    <param name="goal_topic" value="/goal_point"/>
+    <param name="path_topic" value="/planned_path"/>
+    <param name="frame_id" value="map"/>
+    <param name="robot_radius" value="0.15"/>   <!-- Go2+Piper footprint -->
+    <param name="max_iterations" value="500000"/>
+    <param name="snap_search_radius_cells" value="12"/>
+    <param name="require_ground_support" value="true"/>
+    <param name="enable_preblocked_costmap" value="true"/>
+    <param name="preblocked_costmap_radius_cells" value="3"/>
+    <param name="preblocked_costmap_weight" value="2.5"/>
+  </node>
+
+  <node if="$(arg enable_octomap)" pkg="jie_octomap" type="octomap_to_occupied_markers_node"
+        name="octomap_to_occupied_markers" output="screen">
+    <param name="octomap_topic" value="/octomap"/>
+    <param name="marker_topic" value="/octomap_occupied_markers"/>
+    <param name="frame_id" value="map"/>
+  </node>
+
+  <!-- ====== EGO-Planner (局部 B-spline 优化) ====== -->
+  <arg name="map_size_x" default="50.0"/>
+  <arg name="map_size_y" default="50.0"/>
+  <arg name="map_size_z" default="10.0"/>
+  <arg name="odom_topic" default="/Odometry"/>
+  <arg name="flight_type" default="1"/>
+
+  <include file="$(find ego_planner)/launch/advanced_param.xml">
+    <arg name="map_size_x_" value="$(arg map_size_x)"/>
+    <arg name="map_size_y_" value="$(arg map_size_y)"/>
+    <arg name="map_size_z_" value="$(arg map_size_z)"/>
+    <arg name="odometry_topic" value="$(arg odom_topic)"/>
+    <arg name="cloud_topic" value="/cloud_registered"/>
+    <arg name="max_vel" value="0.3"/>
+    <arg name="max_acc" value="2.0"/>
+    <arg name="planning_horizon" value="2.0"/>
+    <arg name="flight_type" value="$(arg flight_type)"/>
+    <arg name="lidar_frame_id" value="map"/>
+    <arg name="camera_pose_topic" value="/pcl_render_node/camera_pose"/>
+    <arg name="depth_topic" value="/pcl_render_node/depth"/>
+    <arg name="cx" value="321.046"/>
+    <arg name="cy" value="243.449"/>
+    <arg name="fx" value="387.229"/>
+    <arg name="fy" value="387.229"/>
+  </include>
+
+  <!-- traj_server: B-spline → cmd_vel -->
+  <node pkg="ego_planner" name="traj_server" type="traj_server" output="screen">
+    <remap from="/position_cmd" to="planning/pos_cmd"/>
+    <remap from="/odom_world" to="$(arg odom_topic)"/>
+    <param name="traj_server/time_forward" value="2" type="double"/>
+    <param name="odometry_topic" value="$(arg odom_topic)" type="string"/>
+  </node>
+
+  <!-- waypoint_generator: RViz 2D Nav Goal -->
+  <node pkg="waypoint_generator" name="waypoint_generator" type="waypoint_generator" output="screen">
+    <remap from="~odom" to="$(arg odom_topic)"/>
+    <remap from="~goal" to="/move_base_simple/goal"/>
+  </node>
+
+</launch>

@@ -1,0 +1,25 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 200
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    go2_piper_pd_controller:
+      type: go2_piper_policy_controller/PolicyPdController
+
+go2_piper_pd_controller:
+  ros__parameters:
+    contract_path: /workspace/LeggedManip_Lab/ros2_ws/src/go2_piper_wbc/config/policy_contract.yaml
+    target_topic: /go2_piper/policy_targets
+    target_timeout: 0.1
+    # Sim2sim stabilisation: scale up arm PD damping only (indices 12-17).
+    # The training contract stays untouched; this only affects Gazebo ODE.
+    damping_scale: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
+    gripper_joints: [joint7, joint8]
+    gripper_target_topic: /go2_piper/gripper/target
+    gripper_default_positions: [0.04, -0.04]
+    gripper_stiffness: [160.0, 160.0]
+    gripper_damping: [8.0, 8.0]
+    gripper_effort_limits: [20.0, 20.0]
+    gripper_lower_limits: [0.0, -0.05]
+    gripper_upper_limits: [0.05, 0.0]
+    gripper_target_slew_rate: 0.04

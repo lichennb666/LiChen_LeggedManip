@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="pick_transport_obstacle">
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+    <physics name="ode" type="ode">
+      <max_step_size>0.005</max_step_size>
+      <real_time_update_rate>200</real_time_update_rate>
+      <ode><solver><type>quick</type><iters>100</iters><sor>1.0</sor></solver></ode>
+    </physics>
+    <gravity>0 0 -9.81</gravity>
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros><namespace>/gazebo</namespace></ros>
+      <update_rate>50</update_rate>
+    </plugin>
+
+    <!-- Keep base task layout unchanged for safe comparison with the original scene. -->
+    <model name="pickup_table">
+      <static>true</static>
+      <pose>0.45 0.13 0.496 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.55 0.46 0.02</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.55 0.46 0.02</size></box></geometry>
+          <material><ambient>0.35 0.25 0.15 1</ambient><diffuse>0.5 0.35 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="drop_table">
+      <static>true</static>
+      <pose>0.20 -0.30 0.496 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.80 0.40 0.02</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.80 0.40 0.02</size></box></geometry>
+          <material><ambient>0.2 0.25 0.35 1</ambient><diffuse>0.3 0.4 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="target_box">
+      <static>false</static>
+      <pose>0.61 0.18 0.556 0 0 0</pose>
+      <link name="body">
+        <inertial>
+          <mass>0.20</mass>
+          <inertia><ixx>0.0001093</ixx><iyy>0.0001333</iyy><izz>0.0001093</izz></inertia>
+        </inertial>
+        <collision name="body_collision">
+          <surface>
+            <friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode></friction>
+            <contact><ode><kp>300000</kp><kd>30</kd><max_vel>0.005</max_vel><min_depth>0.001</min_depth></ode></contact>
+          </surface>
+          <geometry><box><size>0.10 0.08 0.10</size></box></geometry>
+        </collision>
+        <visual name="body_visual">
+          <geometry><box><size>0.10 0.08 0.10</size></box></geometry>
+          <material><ambient>0.55 0.18 0.05 1</ambient><diffuse>0.75 0.25 0.06 1</diffuse></material>
+        </visual>
+      </link>
+      <link name="handle">
+        <pose>-0.130 0 0 0 0 0</pose>
+        <inertial>
+          <mass>0.01</mass>
+          <inertia><ixx>0.000004</ixx><iyy>0.000004</iyy><izz>0.000001</izz></inertia>
+        </inertial>
+        <collision name="grip_collision">
+          <surface>
+            <friction><ode><mu>15.0</mu><mu2>15.0</mu2><slip1>0.0</slip1><slip2>0.0</slip2></ode></friction>
+            <contact><ode><kp>300000</kp><kd>30</kd><max_vel>0.005</max_vel><min_depth>0.001</min_depth></ode></contact>
+          </surface>
+          <geometry><box><size>0.018 0.018 0.060</size></box></geometry>
+        </collision>
+        <collision name="upper_mount_collision"><pose>0.040 0 0.030 0 0 0</pose><geometry><box><size>0.080 0.018 0.018</size></box></geometry></collision>
+        <collision name="lower_mount_collision"><pose>0.040 0 -0.030 0 0 0</pose><geometry><box><size>0.080 0.018 0.018</size></box></geometry></collision>
+        <visual name="grip_visual">
+          <geometry><box><size>0.018 0.018 0.060</size></box></geometry>
+          <material><ambient>0 1 0 1</ambient><diffuse>0 1 0 1</diffuse></material>
+        </visual>
+        <visual name="upper_mount_visual"><pose>0.040 0 0.030 0 0 0</pose><geometry><box><size>0.080 0.018 0.018</size></box></geometry><material><ambient>0 1 0 1</ambient><diffuse>0 1 0 1</diffuse></material></visual>
+        <visual name="lower_mount_visual"><pose>0.040 0 -0.030 0 0 0</pose><geometry><box><size>0.080 0.018 0.018</size></box></geometry><material><ambient>0 1 0 1</ambient><diffuse>0 1 0 1</diffuse></material></visual>
+      </link>
+      <joint name="body_to_handle" type="fixed"><parent>body</parent><child>handle</child></joint>
+    </model>
+
+    <!-- obstacle set: keep central routes free while adding绕行压力. -->
+    <model name="obstacle_box_01">
+      <static>true</static>
+      <pose>0.90 -0.95 0.325 0 0 0</pose>
+      <link name="body">
+        <collision name="collision"><geometry><box><size>0.45 0.20 0.65</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.45 0.20 0.65</size></box></geometry>
+          <material><ambient>0.35 0.35 0.35 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="obstacle_box_02">
+      <static>true</static>
+      <pose>-0.15 -0.72 0.28 0 0 0</pose>
+      <link name="body">
+        <collision name="collision"><geometry><box><size>0.30 0.30 0.56</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.30 0.30 0.56</size></box></geometry>
+          <material><ambient>0.3 0.3 0.4 1</ambient><diffuse>0.45 0.45 0.55 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="obstacle_pole">
+      <static>true</static>
+      <pose>0.98 0.08 0.30 0 0 0.08</pose>
+      <link name="body">
+        <collision name="collision"><geometry><cylinder><radius>0.12</radius><length>0.60</length></cylinder></geometry></collision>
+        <visual name="visual"><geometry><cylinder><radius>0.12</radius><length>0.60</length></cylinder></geometry>
+          <material><ambient>0.35 0.25 0.25 1</ambient><diffuse>0.6 0.4 0.4 1</diffuse></material></visual>
+      </link>
+    </model>
+  </world>
+</sdf>

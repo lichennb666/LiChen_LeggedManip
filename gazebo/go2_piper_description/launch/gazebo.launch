@@ -1,0 +1,52 @@
+<launch>
+  <arg name="world" default="$(find unitree_gazebo)/worlds/competition_scene.world"/>
+  <arg name="paused" default="false"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+
+  <!-- Start Gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world)"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <!-- Load robot description -->
+  <param name="robot_description" textfile="$(find go2_piper_description)/urdf/go2_piper.urdf"/>
+
+  <!-- Spawn robot in Gazebo -->
+  <node pkg="gazebo_ros" type="spawn_model" name="urdf_spawner"
+        args="-urdf -z 0.6 -y -2 -x 0 -model go2_piper -param robot_description -unpause"
+        respawn="false" output="screen"/>
+
+  <!-- Load joint controllers -->
+  <rosparam file="$(find go2_piper_description)/config/go2_piper_control.yaml" command="load"/>
+
+  <!-- Spawn controllers -->
+  <node pkg="controller_manager" type="spawner" name="controller_spawner"
+        ns="/go2_piper_gazebo"
+        args="joint_state_controller
+              FL_hip_controller FL_thigh_controller FL_calf_controller
+              FR_hip_controller FR_thigh_controller FR_calf_controller
+              RL_hip_controller RL_thigh_controller RL_calf_controller
+              RR_hip_controller RR_thigh_controller RR_calf_controller
+              joint1_controller joint2_controller joint3_controller
+              joint4_controller joint5_controller joint6_controller
+              joint7_controller joint8_controller"
+        respawn="false" output="screen"/>
+
+  <!-- Robot state publisher (TF) -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"
+        respawn="false" output="screen">
+    <remap from="/joint_states" to="/go2_piper_gazebo/joint_states"/>
+  </node>
+
+  <!-- PointCloud2 -> Livox format converter -->
+  <node pkg="unitree_guide" type="pointcloud2livox.py" name="pointcloud2livox" output="screen">
+    <param name="laser_blind" value="0.5"/>
+    <param name="min_angle" value="-7"/>
+    <param name="max_angle" value="55"/>
+    <param name="lidar_frame" value="laser_livox"/>
+  </node>
+</launch>
